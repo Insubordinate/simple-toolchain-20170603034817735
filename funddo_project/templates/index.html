@@ -1,0 +1,24 @@
+{% load static %}
+<html>
+<head>
+	<title>Funddo</title>
+</head>
+<body>
+<h1> Welcome{{ user.username}} <img src="{{ user.picture }}" class="img-responsive img-circle" style='width:150px;'></h1>
+<a href="{% url 'about' %}">About Us</a>
+{% if user.is_authenticated %}
+<a href="{% url 'logout' %}">logout</a>
+<a href="{% url 'make_request' %}">MAKE A REQUEST</a>
+{% else %}
+<a href="{% url 'register' %}">register</a>
+<a href="{% url 'login' %}">login</a>
+{% endif %}
+
+<h1>REQUESTS</h1>
+	<u1 class="list-group">
+	{% for req in recent_requests %}
+	<li class="list-group-item"><a href="/requests/{{req.id}}"><p>{{ req.title }}</p></a></li>
+	{% endfor %}
+
+</body>
+</html>
