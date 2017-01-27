@@ -1,10 +1,10 @@
 {% load static %}
 <html>
 <head>
-	<title>Register</title>
+	<title>Register as a Jobseeker</title>
 </head>
 <body>
-<h1>Register</h1>
+<h1>Register as a Jobseeker</h1>
 
 	{% if registered %}
 	<strong>Thanks for registering!</strong>
@@ -12,7 +12,7 @@
 	{% else %}
 	<strong class="form-signin-heading"><h2>Register Here</h2></strong>
 
-	<form class="form-signin" id='user_form' method ='post' action ='/register/' enctype="multipart/form-data">
+	<form class="form-signin" id='user_form' method ='post' action ='/register_jobseeker/' enctype="multipart/form-data">
 		<strong class="form-signin-heading">Please Register</strong>
 		{% csrf_token %}
 

@@ -3,7 +3,7 @@ from django.views.generic.detail import DetailView
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from models import UserProfile, Request
 from django.contrib.auth.models import User
-from forms import RequestForm, UserForm, UserProfileForm, ContactForm
+from forms import RequestForm, UserForm, UserFunderForm, ContactForm, UserJobSeekerForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
@@ -39,12 +39,12 @@ def make_request(request):
 
 def requests(request, req_id):
 	req = get_object_or_404(Request, id=req_id)
+	#req_poster = req.email
 	if request.method == 'POST':
 		form = ContactForm(request.POST)
 
 		if form.is_valid():
-			form.EmailMessage([req.email])
-
+			form.EmailMessage()
 
 			return HttpResponseRedirect('/')
 		else:
@@ -58,13 +58,13 @@ def requests(request, req_id):
 	return render(request, 'requests.html', {'req': req, 'form': form}
 		)
 	
-def register(request):
+def register_jobseeker(request):
 	registered = False
 
 	if request.method == 'POST':
 		user_form = UserForm(data=request.POST)
 
-		profile_form = UserProfileForm(data=request.POST)
+		profile_form = UserJobSeekerForm(data=request.POST)
 
 		if user_form.is_valid() and profile_form.is_valid():
 			user = user_form.save()
@@ -72,6 +72,7 @@ def register(request):
 			user.save() 
 
 			profile = profile_form.save(commit=False)
+			profile.jobseeker = True
 
 			profile.user = user
 
@@ -87,9 +88,44 @@ def register(request):
 
 	else:
 		user_form = UserForm()
-		profile_form = UserProfileForm()
+		profile_form = UserJobSeekerForm()
 
-	return render(request, 'register.html', {'user_form' : user_form, 'profile_form': profile_form, 'registered': registered})
+	return render(request, 'register_jobseeker.html', {'user_form' : user_form, 'profile_form': profile_form, 'registered': registered})
+
+def register_funder(request):
+	registered = False
+
+	if request.method == 'POST':
+		user_form = UserForm(data=request.POST)
+
+		profile_form = UserDonorForm(data=request.POST)
+
+		if user_form.is_valid() and profile_form.is_valid():
+			user = user_form.save()
+			user.set_password(user.password)
+			user.save() 
+
+			profile = profile_form.save(commit=False)
+			profile.funder = True
+
+			profile.user = user
+
+			if 'picture' in request.FILES:
+				profile.picture = request.FILES['picture']
+
+			profile.save()
+
+			registered = True
+
+		else:
+			print user_form.errors, profile_form.errors
+
+	else:
+		user_form = UserForm()
+		profile_form = UserFunderForm()
+
+	return render(request, 'register_donor.html', {'user_form' : user_form, 'profile_form': profile_form, 'registered': registered})
+
 
 
 def user_login(request):

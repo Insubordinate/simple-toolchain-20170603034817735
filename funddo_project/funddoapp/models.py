@@ -10,7 +10,9 @@ class UserProfile(models.Model):
 	user = models.OneToOneField(User)
 	picture = models.ImageField(upload_to='profile_images', blank=True)
 	bio = models.TextField()
-	#provider = models.BooleanField(default=False)
+	services = models.TextField()
+	funder = models.BooleanField(default=False, blank=True)
+	jobseeker = models.BooleanField(default=False, blank=True)
 	your_location = models.IntegerField(choices=LOCATION_CHOICES, default=1)
 
 	def __unicode__(self):

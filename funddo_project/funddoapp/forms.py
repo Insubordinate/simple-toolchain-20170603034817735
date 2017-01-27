@@ -13,11 +13,19 @@ class UserForm(forms.ModelForm):
 		model = User
 		fields = ('username', 'password', 'email')
 
-class UserProfileForm(forms.ModelForm):
+class UserJobSeekerForm(forms.ModelForm):
 	your_location = forms.ChoiceField(choices= LOCATION_CHOICES, widget=forms.Select(), required=True)
 	class Meta:
 		model = UserProfile
 		fields = ('picture', 'bio')
+		exclude = ('funder', 'services', 'jobseeker' )
+
+class UserFunderForm(forms.ModelForm):
+	your_location = forms.ChoiceField(choices= LOCATION_CHOICES, widget=forms.Select(), required=True)
+	class Meta:
+		model = UserProfile
+		fields = ('picture', 'services', 'bio')
+		exclude = ('jobseeker', 'funder' )
 
 class RequestForm(forms.ModelForm):
 	title = forms.CharField(max_length=128, help_text="Please enter a title")
@@ -34,7 +42,7 @@ class ContactForm(forms.Form):
 	subject = forms.CharField(required=True)
 	body = forms.CharField(widget=forms.Textarea(), required=True)
 
-	def EmailMessage(self, o):
+	def EmailMessage(self):
 		subject = self.cleaned_data['subject']
 		body = self.cleaned_data['body']
 	
@@ -49,7 +57,7 @@ class ContactForm(forms.Form):
 				emails= UserProfile.user,
 				
 				)
-		email_msg = EmailMessage('Someone is interested', message, [None])
+		email_msg = EmailMessage('Someone is interested', message, ['mholliday6611@gmail.com'])
 
-		email_msg.send
+		email_msg.send()
 
