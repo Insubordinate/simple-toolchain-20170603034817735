@@ -3,6 +3,7 @@ from funddoapp import views
 
 urlpatterns = patterns('',
 	url(r'^$', views.index, name='index'),
+	url(r'^userbylocation/', views.userbylocation, name = 'userlocation'),
 	url(r'^make_request/', views.make_request, name ='make_request'),
 	url(r'^register/', views.register, name= 'register'),
 	url(r'^register_funder/', views.register_funder, name='register_funder'),

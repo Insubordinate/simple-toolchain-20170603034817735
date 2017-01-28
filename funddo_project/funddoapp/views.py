@@ -23,7 +23,13 @@ def index(request):
 	
 	return render(request, 'index.html', context_dict)
 
+def userbylocation(request):
+	context_dict = {}
+	user_location = UserProfile.objects.order_by('your_location')
 
+	context_dict['user_location']= user_location
+	
+	return render(request, 'user_location.html', context_dict)
 def about(request):
 	context_dict = {}
 	return render(request, 'about.html', context_dict)
