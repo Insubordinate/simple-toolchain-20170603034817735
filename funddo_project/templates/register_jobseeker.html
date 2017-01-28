@@ -1,9 +1,10 @@
+{% extends 'base.html' %}
 {% load static %}
-<html>
+
 <head>
 	<title>Register as a Jobseeker</title>
 </head>
-<body>
+{% block body_block %}
 <h1>Register as a Jobseeker</h1>
 
 	{% if registered %}
@@ -37,5 +38,4 @@
 		<button class="btn btn-lg btn-primary btn-block" type="submit" value="submit"> Register</button>
 	</form>
 	{% endif %}
-</body>
-</html>
+{% endblock %}

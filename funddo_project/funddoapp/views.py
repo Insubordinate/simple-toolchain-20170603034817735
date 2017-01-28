@@ -3,27 +3,31 @@ from django.views.generic.detail import DetailView
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from models import UserProfile, Request
 from django.contrib.auth.models import User
-from forms import RequestForm, UserForm, UserFunderForm, ContactForm, UserJobSeekerForm
+from forms import RequestForm, UserForm, UserFunderForm, ContactForm, UserJobSeekerForm, PasswordRecoveryForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from django.contrib.auth.forms import PasswordChangeForm
+from django.core.urlresolvers import reverse_lazy
 from django.core.mail import send_mail
+from braces.views import LoginRequiredMixin
+from django.contrib.auth import update_session_auth_hash
+from django.views.generic import FormView
 # Create your views here.
 
 def index(request):
 	context_dict = {}
-	request_list = Request.objects.order_by('posted_on')[:10]
+	request_list = Request.objects.order_by('-posted_on')[:10]
 
 	context_dict['recent_requests']= request_list
-
-	response = render(request, 'index.html', context_dict)
-	return response
+	
+	return render(request, 'index.html', context_dict)
 
 
 def about(request):
 	context_dict = {}
 	return render(request, 'about.html', context_dict)
-
+@login_required
 def make_request(request):
 	if request.method == "POST":
 		form = RequestForm(request.POST)
@@ -39,12 +43,12 @@ def make_request(request):
 
 def requests(request, req_id):
 	req = get_object_or_404(Request, id=req_id)
-	#req_poster = req.email
+	email_post = req.email
 	if request.method == 'POST':
 		form = ContactForm(request.POST)
 
 		if form.is_valid():
-			form.EmailMessage()
+			form.EmailMessage([email_post])
 
 			return HttpResponseRedirect('/')
 		else:
@@ -57,6 +61,10 @@ def requests(request, req_id):
 		(Request.DoesNotExist)
 	return render(request, 'requests.html', {'req': req, 'form': form}
 		)
+
+def register(request):
+	context_dict = {}
+	return render(request, 'register.html', context_dict)
 	
 def register_jobseeker(request):
 	registered = False
@@ -98,7 +106,7 @@ def register_funder(request):
 	if request.method == 'POST':
 		user_form = UserForm(data=request.POST)
 
-		profile_form = UserDonorForm(data=request.POST)
+		profile_form = UserFunderForm(data=request.POST)
 
 		if user_form.is_valid() and profile_form.is_valid():
 			user = user_form.save()
@@ -124,7 +132,7 @@ def register_funder(request):
 		user_form = UserForm()
 		profile_form = UserFunderForm()
 
-	return render(request, 'register_donor.html', {'user_form' : user_form, 'profile_form': profile_form, 'registered': registered})
+	return render(request, 'register_funder.html', {'user_form' : user_form, 'profile_form': profile_form, 'registered': registered})
 
 
 
@@ -151,3 +159,100 @@ def user_logout(request):
 	logout(request)
 	return HttpResponseRedirect('/')
 
+def user_profile(request, user_username):
+	context_dict = {}
+	user = User.objects.get(username=user_username)
+	profile = UserProfile.objects.get(user=user)
+	context_dict['profile'] = profile
+	context_dict['requests'] = Request.objects.filter(poster=user)
+
+	return render(request, 'profile.html', context_dict)
+@login_required
+def edit_funderprofile(request, user_username):
+	profile = get_object_or_404(UserProfile, user__username=user_username)
+	services = profile.services
+	pic = profile.picture
+	bio = profile.bio
+	if request.user != profile.user:
+		return HttpResponse('Access Denied Loser')
+
+	if request.method == 'POST':
+		form = UserFunderForm(data=request.POST)
+		if form.is_valid():
+			if request.POST['services'] and request.POST['services'] != '':
+				profile.services = request.POST['services']
+			else:
+				profile.services = services
+
+			if request.POST['bio'] and request.POST['bio'] != '':
+				profile.bio = request.POST['bio']
+			else:
+				profile.bio = bio
+
+			if 'picture' in request.FILES:
+				profile.picture = request.FILES['picture']
+			else:
+				profile.picture = pic
+
+			profile.save()
+
+			return user_profile(request, profile.user.username)
+
+		else:
+			print form.errors
+	else:
+		form = UserFunderForm()
+	return render(request, 'edit_funderprofile.html', {'form':form, 'profile':profile}) 
+
+def edit_jobseekerprofile(request, user_username):
+	profile = get_object_or_404(UserProfile, user__username=user_username)
+	pic = profile.picture
+	bio = profile.bio
+	if request.user != profile.user:
+		return HttpResponse('Access Denied Loser')
+
+	if request.method == 'POST':
+		form = UserJobSeekerForm(data=request.POST)
+		if form.is_valid():
+
+			if request.POST['bio'] and request.POST['bio'] != '':
+				profile.bio = request.POST['bio']
+			else:
+				profile.bio = bio
+
+			if 'picture' in request.FILES:
+				profile.picture = request.FILES['picture']
+			else:
+				profile.picture = pic
+
+			profile.save()
+
+			return user_profile(request, profile.user.username)
+
+		else:
+			print form.errors
+	else:
+		form = UserJobSeekerForm()
+	return render(request, 'edit_jobseekerprofile.html', {'form':form, 'profile':profile}) 
+
+class SettingsView(LoginRequiredMixin, FormView):
+	template_name = 'settings.html'
+	form_class = PasswordChangeForm
+	success_url = reverse_lazy('index')
+
+	def get_form(self, form_class):
+		return form_class(user=self.request.user, **self.get_form_kwargs())
+
+	def form_valid(self, form):
+		form.save()
+		update_session_auth_hash(self, request, form.user)
+		return super(SettubgView, self).form_valid(form)
+
+class PasswordRecoveryView(FormView):
+	template_name = "password-recovery.html"
+	form_class = PasswordRecoveryForm
+	success_url = reverse_lazy('login')
+
+	def form_valid(self, form):
+		form.reset_email()
+		return super(PasswordRecoveryView, self).form_valid(form)

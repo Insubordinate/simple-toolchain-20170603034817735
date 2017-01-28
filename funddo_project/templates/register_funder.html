@@ -1,10 +1,11 @@
+{% extends 'base.html' %}
 {% load static %}
-<html>
+
 <head>
-	<title>Register as a Donor</title>
+	<title>Register as a Funder</title>
 </head>
-<body>
-<h1>Register as a Donor</h1>
+{% block body_block %}
+<h1>Register as a Funder</h1>
 
 	{% if registered %}
 	<strong>Thanks for registering!</strong>
@@ -12,7 +13,7 @@
 	{% else %}
 	<strong class="form-signin-heading"><h2>Register Here</h2></strong>
 
-	<form class="form-signin" id='user_form' method ='post' action ='/register_donor/' enctype="multipart/form-data">
+	<form class="form-signin" id='user_form' method ='post' action ='/register_funder/' enctype="multipart/form-data">
 		<strong class="form-signin-heading">Please Register</strong>
 		{% csrf_token %}
 
@@ -37,5 +38,4 @@
 		<button class="btn btn-lg btn-primary btn-block" type="submit" value="submit"> Register</button>
 	</form>
 	{% endif %}
-</body>
-</html>
+{% endblock %}

@@ -91,13 +91,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.7/howto/static-files/
+
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = '<mholliday6611@gmail.com>'
-EMAIL_HOST_PASSWORD = os.environ.get('MAIL_PASS')
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
+EMAIL_HOST_USER = 'mholliday6611@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
 STATIC_URL = '/static/'
 STATIC_PATH = os.path.join(BASE_DIR, 'static')
@@ -107,3 +109,5 @@ STATICFILES_DIRS = (
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
+
+LOGIN_URL = '/login/'

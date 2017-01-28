@@ -1,9 +1,10 @@
+{% extends 'base.html' %}
 {% load static %}
-<html>
+
 <head>
 	<title></title>
 </head>
-<body>
+{% block body_block %}
 <p>{{ req.poster }}'s Post </p>
 <h1>{{ req.title }}</h1>
 
@@ -34,5 +35,4 @@
 </p>
 {% else %}
 {% endif %}
-</body>
-</html>
+{% endblock %}
