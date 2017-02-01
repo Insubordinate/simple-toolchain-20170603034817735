@@ -64,7 +64,7 @@ class ContactForm(forms.Form):
 		email_msg = EmailMessage('Someone is interested',
 		 message,
 		 email,
-		 email_post)
+		 [email_post])
 
 		email_msg.send()
 

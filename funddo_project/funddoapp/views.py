@@ -41,6 +41,7 @@ def make_request(request):
 			post = form.save(commit=False)
 			post.poster = request.user
 			post.posted_on = datetime.now()
+			post.email = request.POST['email']
 			post.save()
 			return HttpResponseRedirect('/')
 	else:
@@ -54,7 +55,7 @@ def requests(request, req_id):
 		form = ContactForm(request.POST)
 
 		if form.is_valid():
-			form.EmailMessage([email_post])
+			form.EmailMessage(email_post)
 
 			return HttpResponseRedirect('/')
 		else:
