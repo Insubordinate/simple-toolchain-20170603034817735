@@ -1,0 +1,398 @@
+{% extends 'base.html' %}
+{% load static %}
+<head>
+  <title>{% block title %}Jobseekers{% endblock %}</title>
+</head>
+{% block body_block %}
+
+<!-- <div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+    <div class="load_title">Jobseekers</div>
+</div> -->
+
+<section class="grey">
+    <div class="container">
+        <div class="row">
+            <div class="top-nav2">
+                <div class="col-md-9 col-sm-9 col-xs-6 jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="50%">
+                <span class="heading">Jobseekers</span>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6 text-right jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="50%">
+                <span class="inner-link">
+                <a href="index.html">Home <i class="fa fa-angle-double-right"></i></a>
+               </span>
+                <span class="inner-link">Jobseekers</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="causes">
+    <div class="container">
+        <div class="causes-nav">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                  <div class="wrapper">
+                    <ul id="portfolio-filter">
+                        <li class="current"><a href="#all" title="">All</a></li>
+                        <li><a href="#orphans" title="" rel="orphans">Male</a></li>
+                        <li><a href="#cancer" title="" rel="cancer">Female</a></li>
+                    </ul>
+                  </div>
+              </div>
+             </div> 
+         <div class="row"> 
+             <div class="col-md-12 col-sm-12 col-xs-12"> 
+               
+                   <ul id="portfolio-list">
+    
+                        <li style="display: block;" class="cleanwater jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%">
+                          <div class="description">
+                                <span class="description-pics"> 
+                                <img src="{% static 'images/cleanwater1.png' %}" alt="" class="img-responsive update-parent">
+                                </span>
+                                   <div class="detail text-center">
+                                      <h2>Help to get Clean Water</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+                        
+                        <li style="display: block;" class="cleanwater jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="85%"> 
+                            <div class="description">
+                            <span class="description-pics"> 
+                            <img src="{% static 'images/cleanwater2.png' %}" alt="" class="img-responsive update-parent">
+                            </span>
+                                <div class="detail text-center">
+                                      <h2>Help to get Clean Water</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+                        
+                        <li class="education jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="80%">
+                            <div class="description">
+                                <span class="description-pics"> 
+                            <img src="{% static 'images/cause1.png' %}" alt="sauses" class="img-responsive update-parent"> 
+                                </span>
+                            
+                                <div class="detail text-center">
+                                      <h2>Help girls to get Education</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum  
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+                      
+                        <li class="education jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%"> 
+                            <div class="description">
+                                <span class="description-pics">
+                            <img src="{% static 'images/cause2.png' %}" alt="sauses" class="img-responsive update-parent">
+                                </span>
+                                <div class="detail text-center">
+                                      <h2>Help girls to get Education</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+                    
+                        <li class="education jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="85%">
+                            <div class="description">
+                                <span class="description-pics">
+                            <img src="{% static 'images/cause3.png' %}" alt="sauses" class="img-responsive update-parent">
+                                </span>
+                                <div class="detail text-center">
+                                      <h2>Help girls to get Education</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+
+                        
+                        <li class="orphans jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%"> 
+                            <div class="description">
+                                <span class="description-pics">
+                            <img src="{% static 'images/orphan1.png' %}" alt="sauses" class="img-responsive update-parent">
+                                </span>
+                                <div class="detail text-center">
+                                      <h2>Help girls to get Education</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+                        
+                        <li class="cleanwater jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="85%"> 
+                            <div class="description">
+                            <span class="description-pics"> 
+                            <img src="{% static 'images/cleanwater3.png' %}" alt="" class="img-responsive update-parent">
+                            </span>
+                                <div class="detail text-center">
+                                      <h2>Help to get Clean Water</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+
+                        <li class="cleanwater jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="80%"> 
+                            <div class="description">
+                            <span class="description-pics"> 
+                            <img src="{% static 'images/cleanwater4.png' %}" alt="" class="img-responsive update-parent">
+                            </span>
+                                <div class="detail text-center">
+                                      <h2>Help to get Clean Water</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+
+                        
+                        <li class="orphans jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%"> 
+                            <div class="description">
+                                <span class="description-pics">
+                            <img src="{% static 'images/orphans2.png' %}" alt="sauses" class="img-responsive update-parent">
+                                </span>
+                                <div class="detail text-center">
+                                      <h2>Help to Orphans</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+                        
+                        <li class="cleanwater jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="85%"> 
+                            <div class="description">
+                            <span class="description-pics"> 
+                            <img src="{% static 'images/cleanwater5.png' %}" alt="" class="img-responsive update-parent">
+                            </span>
+                                <div class="detail text-center">
+                                      <h2>Help to get Clean Water</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+                        
+                        <li class="education jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="80%"> 
+                            <div class="description">
+                                <span class="description-pics">
+                            <img src="{% static 'images/cause4.png' %}" alt="sauses" class="img-responsive update-parent">
+                                </span>
+                                <div class="detail text-center">
+                                      <h2>Help girls to get Education</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+                        
+                        <li class="education jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%"> 
+                            <div class="description">
+                                <span class="description-pics">
+                            <img src="{% static 'images/ause5.png' %}" alt="sauses" class="img-responsive update-parent">
+                                </span>
+                                <div class="detail text-center">
+                                      <h2>Help girls to get Education</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+                        
+                        <li class="education jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="85%">
+                            <div class="description">
+                                <span class="description-pics">
+                            <img src="{% static 'images/cause6.png' %}" alt="sauses" class="img-responsive update-parent">
+                                </span>
+                                <div class="detail text-center">
+                                      <h2>Help girls to get Education</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+                        
+                        <li class="cancer jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="80%"> 
+                            <div class="description">
+                                <span class="description-pics">
+                            <img src="{% static 'images/cancer1.png' %}" alt="sauses" class="img-responsive update-parent">
+                                </span>
+                                <div class="detail text-center">
+                                      <h2>Air Pulotion</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+
+                        
+                        <li class="orphans jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%"> 
+                            <div class="description">
+                                <span class="description-pics">
+                            <img src="{% static 'images/orphans3.png' %}" alt="sauses" class="img-responsive update-parent">
+                                </span>
+                                <div class="detail text-center">
+                                      <h2>Help to Orphans</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+                        
+                        <li class="cleanwater jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="85%"> 
+                            <div class="description">
+                            <span class="description-pics"> 
+                            <img src="{% static 'images/cleanwater6.png' %}" alt="" class="img-responsive update-parent">
+                            </span>
+                                <div class="detail text-center">
+                                      <h2>Help to get Clean Water</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+                        
+                        <li class="cancer jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="80%"> 
+                            <div class="description">
+                                <span class="description-pics">
+                            <img src="{% static 'images/cancer2.png' %}" alt="sauses" class="img-responsive update-parent">
+                                </span>
+                                <div class="detail text-center">
+                                      <h2>Air Pulotion</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        
+                        </li>
+                        
+                        <li class="cancer jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%">
+                            <div class="description">
+                                <span class="description-pics">
+                            <img src="{% static 'images/cancer2.png' %}" alt="sauses" class="img-responsive update-parent">
+                                </span>
+                                <div class="detail text-center">
+                                      <h2>Air Pulotion</h2>
+                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
+                                        <p>
+                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
+                                        </p>
+                                        <a href="#">Profile</a>
+                                     </div>
+                            </div>
+                        </li>
+                   </ul>
+    
+            </div>  
+        </div>      
+       </div>
+ 
+        
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="pages text-center jw-animate-gen noOpacity" data-gen="fadeInDown" data-gen-offset="75%">
+                  <ul class="pagination">
+                    <li>
+                      <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&#60;</span>
+                      </a>
+                    </li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                      <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&#62;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+            </div> <!--COLUMNS FOR PAGINATION-->
+        </div> <!--ROW FOR PAGINATION-->
+    </div> <!--CONTAINER-->
+</section>
+
+
+<section class="need-help text-center">
+    <div class="container padding">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                     <h1 class="jw-animate-gen noOpacity" data-gen-offset="90%" data-gen="fadeInDown">
+                     We need your help</h1>
+                     <hr class="yellow-diamond">
+                     
+                     <h4 class="jw-animate-gen noOpacity" data-gen="fadeInDown" data-gen-offset="80%">
+                      Let’s Stop This hunger and fullfill their happiness</h4>
+                     <p class="jw-animate-gen noOpacity" data-gen="fadeInUp" data-gen-offset="75%">
+                     Integer posuere erat a ante venenatis dapibus posuere velit aliquet. 
+                     Cum sociis natoque penatibus et magnis dis parturient montes, nascetur                 ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis                 consectetur purus sit amet fermentum
+                     </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

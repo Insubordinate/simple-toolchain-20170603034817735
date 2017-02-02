@@ -1,41 +1,122 @@
-{% extends 'base.html' %}
 {% load static %}
 
+<!DOCTYPE html>
+<html>
 <head>
-	<title>Register as a Jobseeker</title>
+	<meta charset="utf-8">
+	<meta http-equiv="U-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<title>{% block title %}Register Jobseeker{% endblock %}</title>
+
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+	<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/animate-custom.css' %}">
+	<link href="{% static 'css/loader.css' %}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+ 	<!-- <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather"> -->
+ 	<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
 </head>
-{% block body_block %}
-<h1>Register as a Jobseeker</h1>
 
-	{% if registered %}
-	<strong>Thanks for registering!</strong>
-	<a href="{% url 'index' %}">Return Home</a>
-	{% else %}
-	<strong class="form-signin-heading"><h2>Register Here</h2></strong>
+<body>
+	
+<header id="header" class="affix">	
+	<div class="container">
+    	<div class="row">
+        	<div class="logo col-md-3 col-sm-3 col-xs-4">
+            	<a href="index.html">
+                <img src="{% static 'images/logo.png' %}" alt="logo" class="img-responsive"></a>
+            </div>
+				<nav class="navbar navbar-default menu col-md-9 col-sm-9 col-xs-8">
+			        <div class="navbar-header">
+			          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			          </button>
+			        </div>
 
-	<form class="form-signin" id='user_form' method ='post' action ='/register_jobseeker/' enctype="multipart/form-data">
-		<strong class="form-signin-heading">Please Register</strong>
-		{% csrf_token %}
-
-		{% for field in user_form.visible_fields %}
-		<div class='form-group'>
-			{{field.errors}}<br>
-			{{field.help_text}}<br>
-			{{field.label}}
-			{{field}}
+			        <div class="collapse navbar-collapse nav-collapse">
+			        	<ul class="nav navbar-nav navbar-right">
+			                <li><a href="{% url 'index' %}">Home</a></li>
+			                <li><a href="{% url 'about' %}">About</a></li>
+                      <li><a href="{% url 'jobseekers' %}">Jobseekers</a></li>
+                      <li><a href="{% url 'funders' %}">Funders</a></li>
+			                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+			                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+			                {% if user.is_authenticated %}
+							<li><a href="{% url 'make_request' %}">MAKE A REQUEST</a></li>
+							<li><a href="{% url 'logout' %}">Logout</a></li>
+							{% else %}
+							<li><a href="{% url 'login' %}">Login/Register</a></li>
+							{% endif %}
+			            </ul>
+			       </div>
+			    </nav>
 		</div>
-		{% endfor %}
+	</div>
+</header>
 
-		{% for field in profile_form.visible_fields %}
-		<div class="form-group">
-			{{field.errors}}<br>
-			{{field.help_text}}<br>
-			{{field.label}}
-			{{field}}
+<div class="container-fluid">
+		<div class="form pre-scrollable">
+			{% if registered %}
+			<strong>Thanks for registering!</strong><br>
+			<a href="{% url 'index' %}">Return Home</a>
+			{% else %}
+			<strong class="form-signin-heading"><h2>Jobseekers Registration</h2></strong>
+
+			<form class="form-signin" id='user_form' method ='post' action ='/register_jobseeker/' enctype="multipart/form-data">
+				{% csrf_token %}
+
+				{% for field in user_form.visible_fields %}
+				<div class='form-group'>
+					{{field.errors}}<br>
+					{{field.help_text}}<br>
+					{{field.label}}
+					{{field}}
+				</div>
+				{% endfor %}
+
+				{% for field in profile_form.visible_fields %}
+				<div class="form-group">
+					{{field.errors}}<br>
+					{{field.help_text}}<br>
+					{{field.label}}
+					{{field}}
+				</div>
+				{% endfor %}
+				<br>
+				<button class="btn btn-lg btn-primary btn-block" type="submit" value="submit"> Register</button>
+			</form>
+			{% endif %}
 		</div>
-		{% endfor %}
+</div>
+    
 
-		<button class="btn btn-lg btn-primary btn-block" type="submit" value="submit"> Register</button>
-	</form>
-	{% endif %}
-{% endblock %}
+	<footer id="footer">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-md-12 col-sm-12 col-xs-12">
+	            <p>
+	              &copy; 2016 Fund Do's. All Rights Reserved.
+	            </p>
+	            </div>
+	        </div>
+	    </div>
+	</footer>
+
+	<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/waypoints.js' %}"></script>
+	<script src="{% static 'js/smoothScroll.js' %}"></script>
+	<script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+	<script src="{% static 'js/hoverintent.min.js' %}"></script>
+	<script src="{% static 'js/jquery.flexisel.js' %}"></script>
+	<script src="{% static 'js/modernizr.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.mixitup.min.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+	<script src="{% static 'js/common.js' %}"></script>
+
+</body>
+</html>

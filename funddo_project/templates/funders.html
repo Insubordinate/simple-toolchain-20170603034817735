@@ -1,0 +1,239 @@
+{% extends 'base.html' %}
+{% load static %}
+<head>
+  <title>{% block title %}Funders{% endblock %}</title>
+</head>
+{% block body_block %}
+
+<!-- <div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+    <div class="load_title">Funders</div>
+</div> -->
+
+<section class="grey">
+    <div class="container">
+        <div class="row">
+            <div class="top-nav2">
+                <div class="col-md-9 col-sm-9 col-xs-6 jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="50%">
+                <span class="heading">Funders</span>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6 text-right jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="50%">
+                <span class="inner-link">
+                <a href="index.html">Home <i class="fa fa-angle-double-right"></i></a>
+               </span>
+                <span class="inner-link">Funders</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="events-wrap">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="causes-nav">
+                    <div class="events jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="70%">
+                      <span class="description-pics">
+                          <img src="{% static 'images/events-main.jpg' %}" alt="main events" class="img-responsive">  
+                        </span>
+                        <div class="event-box">
+                          <a href="event-detail.html">Hungry Africa Childrens</a>
+                            <div class="row"> 
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                <p><i class="fa fa-calendar"></i>10 March, 2015 at 9:00 am - 11:00 am</p>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                <p class="text-right"><i class="fa fa-map-marker"></i>
+                                New York Street, Sanford, LL 00215</p>
+                                </div>
+                                
+                            </div> <!--ROW FOR TEXT-->
+                            
+                        </div>
+                    </div>  <!--DETAILED EVENTS WITH FEATURED IMG-->
+                    
+                     <div class="events jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="65%">
+                      <span class="description-pics">
+                          <img src="{% static 'images/events-main2.jpg' %}" alt="main events" class="img-responsive">  
+                        </span>
+                        <div class="event-box">
+                          <a href="event-detail.html">Children Violence, How to help them?</a>
+                            <div class="row"> 
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                <p><i class="fa fa-calendar"></i>
+                                8 Feb, 2015 at 8:00 am - 12:00 pm</p>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                <p class="text-right"><i class="fa fa-map-marker"></i>
+                                Sacramento, CA</p>
+                                </div>
+                                
+                            </div> <!--ROW FOR TEXT-->
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="events jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="70%">
+                      <span class="description-pics">
+                          <img src="{% static 'images/events-main3.jpg' %}" alt="main events" class="img-responsive">  
+                        </span>
+                        <div class="event-box">
+                          <a href="event-detail.html">Charity Marathon 2015</a>
+                            <div class="row"> 
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                <p><i class="fa fa-calendar"></i>
+                                14 Feb, 2015 at 8:00 am - 12:00 pm</p>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                <p class="text-right"><i class="fa fa-map-marker"></i>
+                                Sacramento, CA</p>
+                                </div>
+                                
+                            </div> <!--ROW FOR TEXT-->
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">    
+                      <div class="pages text-center jw-animate-gen noOpacity" data-gen="fadeInDown" data-gen-offset="70%">
+                      <ul class="pagination">
+                        <li>
+                          <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&#60;</span>
+                          </a>
+                        </li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                          <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&#62;</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    </div>
+                </div> 
+                
+            </div> <!--COL-8-->
+            
+            <div class="col-md-4 col-sm-4 col-xs-12">
+            
+              <div class="latest-causes jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="60%">
+                    <h1>PAST EVENTS</h1>
+                    <span class="border"></span>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                      <img src="{% static 'images/past-event1.png"' %} alt="latest causes" class="img-responsive">
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9">
+                        <a href="event-detail.html">Stop Children Hunger</a>
+                        <p><i class="fa fa-calendar"></i>10 Dec, 2014 at 9:00 am - 21:00 pm</p>
+                        </div>
+                    </div> 
+                </div>
+                
+              <div class="latest-causes jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="60%">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                     <img src="{% static 'images/past-event2.png"' %} alt="latest causes" class="img-responsive">
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9">
+                        <a href="event-detail.html">Charity Soccer Match</a>
+                        <p><i class="fa fa-calendar"></i>8 Jan, 2015 at 9:00 am - 21:00 pm</p>
+                        </div>
+                    </div> 
+                </div> 
+                
+              <div class="latest-causes jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="60%">
+                  <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                        <img src="{% static 'images/past-event3.png"' %} alt="latest causes" class="img-responsive">
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9">
+                        <a href="event-detail.html">Musical Night - Charity</a>
+                        <p><i class="fa fa-calendar"></i>12 Jan, 2015 at 9:00 pm - 24:00 pm</p>
+                        </div>
+                    </div> 
+                </div>
+                
+              <div class="latest-causes jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="70%">
+                    <h1>LATEST CAUSES</h1>
+                    <span class="border"></span>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                        <img src="{% static 'images/latest-causes1.p' %}ng" alt="latest causes" class="img-responsive">
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9">
+                        <a href="causes-detail.html">Help Girls to get Education</a>
+                        <p>Lorem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet lortem ipsum.</p>
+                        </div>
+                    </div> 
+                </div>
+                
+              <div class="latest-causes jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="70%">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                        <img src="{% static 'images/latest-causes2.p' %}ng" alt="latest causes" class="img-responsive">
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9">
+                        <a href="causes-detail.html">South African Girls Education</a>
+                        <p>Lorem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet lortem ipsum.</p>
+                        </div>
+                    </div> 
+                </div>
+                
+              <div class="latest-causes jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="70%">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                        <img src="{% static 'images/latest-causes3.p' %}ng" alt="latest causes" class="img-responsive">
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9">
+                        <a href="causes-detail.html">Ipsum Set Emt ret it Not</a>
+                        <p>Lorem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet lortem ipsum.</p>
+                        </div>
+                    </div> 
+                </div>
+                
+              <div class="latest-causes clearfix jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="75%">
+                <h1>GALLERY</h1>
+                    <span class="border"></span>
+                    <a href="gallery.html">
+                        <img src="{% static 'images/gallery1.png" al' %}t="latest pictures" class="img-responsive gallery"></a>
+              <a href="gallery.html">
+              <img src="{% static 'images/gallery2.png" al' %}t="latest pictures" class="img-responsive gallery">
+              </a>
+              <a href="gallery.html">
+              <img src="{% static 'images/gallery3.png" al' %}t="latest pictures" class="img-responsive gallery">
+              </a>
+              <a href="gallery.html">
+              <img src="{% static 'images/gallery4.png" al' %}t="latest pictures" class="img-responsive gallery">
+              </a>
+              <a href="gallery.html">
+              <img src="{% static 'images/gallery5.png" al' %}t="latest pictures" class="img-responsive gallery">
+              </a>
+              <a href="gallery.html">
+              <img src="{% static 'images/gallery6.png" al' %}t="latest pictures" class="img-responsive gallery">
+              </a>
+              
+              <div class="clearfix"></div> 
+              </div>
+                
+                       
+            </div> <!--COL-4-->
+            
+            
+        </div> <!--ROW OF ALL CONTENT-->
+    </div> <!--CONTAINER-->
+</section>
+
+{% endblock %}

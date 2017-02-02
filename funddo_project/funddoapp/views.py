@@ -16,12 +16,31 @@ from django.views.generic import FormView
 # Create your views here.
 
 def index(request):
+	return render(request, 'index.html')
+
+def about(request):
+	return render(request, 'about.html')
+
+def jobseekers(request):
+	return render(request, 'jobseekers.html')
+
+def funders(request):
+	return render(request, 'funders.html')
+
+def home(request):
 	context_dict = {}
 	request_list = Request.objects.order_by('-posted_on')[:10]
 
 	context_dict['recent_requests']= request_list
 	
-	return render(request, 'index.html', context_dict)
+	return render(request, 'home.html', context_dict)
+
+def gallery(request):
+	return render(request, 'gallery.html')
+
+def contact(request):
+	return render(request, 'contact.html')
+
 
 def userbylocation(request):
 	context_dict = {}
@@ -30,9 +49,7 @@ def userbylocation(request):
 	context_dict['user_location']= user_location
 	
 	return render(request, 'user_location.html', context_dict)
-def about(request):
-	context_dict = {}
-	return render(request, 'about.html', context_dict)
+
 @login_required
 def make_request(request):
 	if request.method == "POST":
@@ -69,10 +86,6 @@ def requests(request, req_id):
 	return render(request, 'requests.html', {'req': req, 'form': form}
 		)
 
-def register(request):
-	context_dict = {}
-	return render(request, 'register.html', context_dict)
-	
 def register_jobseeker(request):
 	registered = False
 
@@ -263,3 +276,6 @@ class PasswordRecoveryView(FormView):
 	def form_valid(self, form):
 		form.reset_email()
 		return super(PasswordRecoveryView, self).form_valid(form)
+
+def funder_profile(request):
+	return render(request, 'funder_profile.html')

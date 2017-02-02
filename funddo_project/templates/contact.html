@@ -1,28 +1,78 @@
 {% extends 'base.html' %}
 {% load static %}
-
 <head>
-	<title></title>
+  <title>{% block title %}Contact{% endblock %}</title>
 </head>
 {% block body_block %}
-<h1 class="form-signin-heading">Contact Us</h1>
 
-<form id="user_form" method="post" action="/contact/">
 
-{% csrf_token %}
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}"> -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
 
-{% for hidden in form.hidden_fields %}
-	{{ hidden }}
-{% endfor %}
 
-{% for field in form.visible_fields %}
-<div class='form-group'>
-	{{field.errors}}
-	{{field.help_text}}
-	{{field.label}}
-	{{ field }}
-</div>
-{% endfor %}
-<button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">Contact US</button>
-</form>
+<section class="grey">
+    <div class="container">
+        <div class="row">
+            <div class="top-nav2">
+                <div class="col-md-9 col-sm-9 col-xs-6 jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="50%">
+                <span class="heading">Contact Us</span>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6 text-right jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="50%">
+                <span class="inner-link">
+                <a href="index.html">Home <i class="fa fa-angle-double-right"></i></a>
+               </span>
+                <span class="inner-link">Contact Us</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-wrap">
+    <div class="container">
+        <div class="row">
+
+        <h1 class="jw-animate-gen noOpacity" data-gen="fadeInDown" data-gen-offset="90%">
+            Get in Touch</h1>
+        
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="contact">
+            <p class="jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="75%">
+            We are very approachable and would love to speak to you. Feel free to call, send us an email, Tweet us or simply complete the enquiry form.</p>
+            <p class="jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="75%">
+            <span>5512 Lorem Ipsum Vestibulum Molesqu, D</span>
+            <span>olor Sit Amet, Egestas 666 69</span> 
+             <a href="mailto:mail@compname.com">mail@compname.com </a>
+            <span>+1 800 450 6935, +1 800 450 6940</span> 
+            </p>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-sm-6 col-xs-12">
+        	<div class="contact">
+            	<div class="expMessage"></div>
+               <form method="post" id="contact-form" class="jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="75%">
+                   <div class="form-group">
+                    <label for="formInput[name]">Name</label>
+                    <input type="text" class="form-control" id="exampleInputName" name="formInput[name]" placeholder="Name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="formInput[email]">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="formInput[email]" placeholder="Name@domain.com" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="formInput[name]">Message</label>
+                    <textarea name="formInput[message]" rows="3"></textarea>
+                  </div>
+              
+              <button type="submit" class="btn btn-default">Submit</button>
+              <input type="hidden" name="action" value="submitform">
+            </form>
+            
+            </div>
+        </div>
+        
+        </div> <!--ROW-->
+    </div> <!--CONTAINER-->
+</section>
 {% endblock %}

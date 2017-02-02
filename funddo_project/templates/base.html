@@ -1,19 +1,153 @@
 {% load static %}
 
-<html lang="eng">
+<!DOCTYPE html>
+<html>
 <head>
-	<title>{% block title %}Fund Dos!{% endblock %}</title>
+	<meta charset="utf-8">
+	<meta http-equiv="U-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<title>{% block title %}Fund Do's{% endblock %}</title>
+
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+	<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/animate-custom.css' %}">
+	<link href="{% static 'css/loader.css' %}" rel="stylesheet" type="text/css">
+ 	<!-- <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather"> -->
 </head>
+
 <body>
-<a href="{% url 'index' %}">HOME </a>
-<a href="{% url 'about' %}">About Us</a>
-{% if user.is_authenticated %}
-<a href="{% url 'logout' %}">logout</a>
-<a href="{% url 'make_request' %}">MAKE A REQUEST</a>
-{% else %}
-<a href="{% url 'register' %}">register</a>
-<a href="{% url 'login' %}">login</a>
-{% endif %}
-{% block body_block %}{% endblock %}
+	
+	<header id="header" class="affix">	
+	<div class="container">
+    	<div class="row">
+        	<div class="logo col-md-3 col-sm-3 col-xs-4">
+            	<a href="index.html">
+                <img src="{% static 'images/logof.png' %}" alt="logo" class="img-responsive"></a>
+            </div>
+				<nav class="navbar navbar-default menu col-md-9 col-sm-9 col-xs-8">
+			        <div class="navbar-header">
+			          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			          </button>
+			        </div>
+
+			        <div class="collapse navbar-collapse nav-collapse">
+			        	<ul class="nav navbar-nav navbar-right">
+			                <li><a href="{% url 'index' %}">Home</a></li>
+			                <li><a href="{% url 'about' %}">About</a></li>
+                      <li><a href="{% url 'jobseekers' %}">Jobseekers</a></li>
+                      <li><a href="{% url 'funders' %}">Funders</a></li>
+			                <!-- <li><a href="{% url 'gallery' %}">Gallery</a></li> -->
+			                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+			                {% if user.is_authenticated %}
+          							<!-- <li><a href="{% url 'make_request' %}">MAKE A REQUEST</a></li> -->
+          							<li><a href="{% url 'logout' %}">Logout</a></li>
+                        <li><a href="{% url 'settings' %}"><i class="fa fa-gear fa-lg"></i></a></li>
+        							{% else %}
+          							<li><a href="{% url 'login' %}">Login/Register</a></li>
+        							{% endif %}
+			            </ul>
+			       </div>
+			    </nav>
+		</div>
+	</div>
+</header>
+
+
+    <div class="container-fluid">
+		{% block body_block %}{% endblock %}
+	</div>
+
+<section class="features">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-4 col-xs-12 jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="80%">
+          <div class="shape"></div>
+           <div id="donate">
+           <div class="logo">
+           <img src="{% static 'images/donate.png' %}" alt="logo goes here">
+           </div>
+           <p>
+            lorem ipsum dolor sit amet, consecte tur adipiscing elit.
+            Nulla ornare port titor diam, a accumsan justo laoreet.
+            Lorem ipsum dolor sit amet, consecte.
+           </p>
+           
+           <span class="glyphicon glyphicon-home pull-left"></span>
+             <address>2, Sector-63, Noida, 201301, Africa</address>
+           
+           <span class="glyphicon glyphicon-envelope pull-left"></span>
+            <em>123 900 123 456</em>
+           <br>
+           <span class="glyphicon glyphicon-earphone pull-left"></span>
+            <a href="#">contact@donate.com</a> 
+           <div class="shape"></div>
+           </div>
+      </div>
+      
+      <div class="col-md-3 col-sm-4 col-xs-12 col-md-offset-1 jw-animate-gen noOpacity" data-gen="fadeInUp" data-gen-offset="85%"> <!--for twitter feed columns-->
+       <div id="twitter">
+       <div class="shape"></div>
+        <h3>INSTAGRAM FEED</h3>
+        <p>
+        <a href="#">@donate</a> Various versions have evolved over the years, 
+        sometimes by accident, 
+        sometimes on purpos. <br>
+         <strong>2 hours ago </strong>
+        </p>
+        <p>
+        <a href="#">@donate</a> Various versions have evolved over the years, 
+        sometimes by accident, 
+        sometimes on purpos.<br> 
+        <strong>2 hours ago </strong> 
+        </p>
+       </div>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-1 jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="75%">
+      <div id="latest-work" class="pull-right">
+       <div class="shape"></div>
+        <h3><a href="{% url 'gallery' %}">GALLERY</a></h3>
+        <img src="{% static 'images/latest1.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest2.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest3.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest4.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest5.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest6.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest7.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest8.png' %}" width="80" height="61" alt="latest pictures">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+	<footer id="footer">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-md-12 col-sm-12 col-xs-12">
+	            <p>
+	              &copy; 2016 Fund Do's. All Rights Reserved.
+	            </p>
+	            </div>
+	        </div>
+	    </div>
+	</footer>
+
+	<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/waypoints.js' %}"></script>
+	<script src="{% static 'js/smoothScroll.js' %}"></script>
+	<script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+	<script src="{% static 'js/hoverintent.min.js' %}"></script>
+	<script src="{% static 'js/jquery.flexisel.js' %}"></script>
+	<script src="{% static 'js/modernizr.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.mixitup.min.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+	<script src="{% static 'js/common.js' %}"></script>
+
 </body>
 </html>
