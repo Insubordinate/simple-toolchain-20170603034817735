@@ -742,6 +742,9 @@ hr{
 
 /* ====== FOOTER ===== */
 footer{
+	position: fixed;
+	width: 100%;
+	bottom: 0;
 	background:#ffff00;
 	color:#000;
 	text-align:center;

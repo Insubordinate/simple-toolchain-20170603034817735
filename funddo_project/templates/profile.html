@@ -1,16 +1,40 @@
+{% extends 'base.html' %}
 {% load static %}
-<head>
-  <title>{% block title %}{{user.username}}'s Profile{% endblock %}</title>
-</head>
+  <head>
+    <title>{% block title %}{{user.username}}'s Profile{% endblock %}</title>
+  </head>
 {% block body_block %}
 
-{% if profile.picture %}
-	<img src="{{profile.picture.url}}" class="img-responsive img-circle" style="width:150px;">
-{% else %}
-	<img src="http://www.tshirthell.com/shirts/products/a339/a339.gif?v11301bss2.jpg" class="img-responsive img-circle" style="width:150px;">
-{% endif %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
 
-<h1>{{profile.user.username}}</h1>
+<section class="grey">
+      <div class="container">
+          <div class="row">
+              <div class="top-nav2">
+                  <div class="col-md-9 col-sm-9 col-xs-6 jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="50%">
+                  <span class="heading">Profile</span>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-6 text-right jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="50%">
+                  <span class="inner-link">
+                  <a href="index.html">Home <i class="fa fa-angle-double-right"></i></a>
+                 </span>
+                  <span class="inner-link">Profile</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+<div class="row">
+	<h1>{{profile.user.username}}</h1>
+	<div class="col-md-6 col-sm-6 col-xs-12">
+		{% if profile.picture %}
+			<img src="{{profile.picture.url}}" class="img-responsive img-circle" style="width:350px; margin-top: 15px;">
+		{% else %}
+			<img src="http://www.tshirthell.com/shirts/products/a339/a339.gif?v11301bss2.jpg" class="img-responsive img-circle" style="width:350px;">
+		{% endif %}
+	</div>
+
 		{% if profile.funder = False and requests %}
 		<h3>Request Made :</h3>
 		<ul>
@@ -22,22 +46,24 @@
 			{% endfor %}
 		{% endif %}
 
-<div class="col-xs-12 col-md-6">
-	<h3>About {{profile.user.username}}</h3>
-	{% if profile.services and profile.funder = True %}
-	<p>{{profile.services}}</p>
-	{% endif %}
-	{% if profile.bio %}
-	<p>{{profile.bio}}</p>
-	{% endif %}
-</div>
+	<div class="col-xs-12 col-sm-6 col-md-6">
+		{% if profile.services and profile.funder = True %}
+			<p>{{profile.services}}</p>
+		{% endif %}
 
-{% if profile.user == user and profile.funder = True %}
-	<a href="{% url 'edit_funderprofile' profile.user.username %}">Edit Your Funder Profile</a>
-{% endif %}
+		{% if profile.bio %}
+			<h3>Bio</h3>
+			<p>{{profile.bio}}</p>
+		{% endif %}
 
-{% if profile.user == user and profile.jobseeker = True %}
-	<a href="{% url 'edit_jobseekerprofile' profile.user.username %}">Edit Your JobSeeker Profile</a>
-{% endif %}				
+		{% if profile.user == user and profile.funder = True %}
+			<a href="{% url 'edit_funderprofile' profile.user.username %}">Edit Your Funder Profile</a>
+		{% endif %}
+
+		{% if profile.user == user and profile.jobseeker = True %}
+			<a href="{% url 'edit_jobseekerprofile' profile.user.username %}">Edit Your JobSeeker Profile</a>
+		{% endif %}	
+	</div>		
+</div>	
 
 {% endblock %}

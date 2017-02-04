@@ -1,12 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+body {
+  background-image: url("https://static.vecteezy.com/system/resources/previews/000/086/115/non_2x/barber-shop-and-salon-vectors.jpg");
+  background-size: 50%;
+}
+
+
 .form {
   position: fixed;
   z-index: 1;
   background: #FFFFFF;
   max-width: 400px;
+  max-height: 400px;
   /*max-height: 450px;*/
-  /*margin: 50px;*/
+  margin-top: 3%;
   padding: 0 25px 25px 25px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);

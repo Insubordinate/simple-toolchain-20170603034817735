@@ -1,0 +1,9 @@
+#gallery-wrap {
+	padding: 3%;
+}
+.gallery-nav {
+	text-align: center;
+}
+.gallery-nav .row {
+	margin-bottom: 50px;
+}

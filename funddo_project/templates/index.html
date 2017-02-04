@@ -5,12 +5,56 @@
   </head>
 {% block body_block %}
 
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+
 <!-- <div id="loader-wrapper">
       <div id="loader"></div>
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
       <div class="load_title">Fund Do's</div>
   </div> -->
+
+{% if user.is_authenticated %}
+
+  <section class="grey">
+      <div class="container">
+          <div class="row">
+              <div class="top-nav2">
+                  <div class="col-md-9 col-sm-9 col-xs-6 jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="50%">
+                  <span class="heading">Inbox</span>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-6 text-right jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="50%">
+                  <span class="inner-link">
+                  <a href="index.html">Home <i class="fa fa-angle-double-right"></i></a>
+                 </span>
+                  <span class="inner-link">Inbox</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <div class="inbox">
+    <h1>Welcome <a href="{% url 'profile' user.username %}">{{user.username}}</a></h1><br>
+
+    <h1>Recent Requests</h1>
+      <u1 class="list-group">
+        {% for req in recent_requests %}
+        <li class="list-group-item"><a href="/requests/{{req.id}}"><p>{{ req.title }}</p></a></li>
+        {% endfor %}
+      </u1>
+      <br>
+      
+    <!--   {% if user == profile.funder %}
+        <a href="{% url 'jobseekers' %}">Jobseekers by location</a><br>
+      {% endif %}
+      {% if profile.jobseeker %}
+        <a href="{% url 'funders' %}">Funders by location</a><br>
+      {% endif %} -->
+  </div>
+
+{% else %}
+
 
 <section class="slider">
 
@@ -343,6 +387,71 @@
     </div>
   </div>
 </section>
+
+<section class="features">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-4 col-xs-12 jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="80%">
+          <div class="shape"></div>
+           <div id="donate">
+           <div class="logo">
+           <img src="{% static 'images/donate.png' %}" alt="logo goes here">
+           </div>
+           <p>
+            lorem ipsum dolor sit amet, consecte tur adipiscing elit.
+            Nulla ornare port titor diam, a accumsan justo laoreet.
+            Lorem ipsum dolor sit amet, consecte.
+           </p>
+           
+           <span class="glyphicon glyphicon-home pull-left"></span>
+             <address>2, Sector-63, Noida, 201301, Africa</address>
+           
+           <span class="glyphicon glyphicon-envelope pull-left"></span>
+            <em>123 900 123 456</em>
+           <br>
+           <span class="glyphicon glyphicon-earphone pull-left"></span>
+            <a href="#">contact@donate.com</a> 
+           <div class="shape"></div>
+           </div>
+      </div>
+      
+      <div class="col-md-3 col-sm-4 col-xs-12 col-md-offset-1 jw-animate-gen noOpacity" data-gen="fadeInUp" data-gen-offset="85%"> <!--for twitter feed columns-->
+       <div id="twitter">
+       <div class="shape"></div>
+        <h3>INSTAGRAM FEED</h3>
+        <p>
+        <a href="#">@donate</a> Various versions have evolved over the years, 
+        sometimes by accident, 
+        sometimes on purpos. <br>
+         <strong>2 hours ago </strong>
+        </p>
+        <p>
+        <a href="#">@donate</a> Various versions have evolved over the years, 
+        sometimes by accident, 
+        sometimes on purpos.<br> 
+        <strong>2 hours ago </strong> 
+        </p>
+       </div>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-1 jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="75%">
+      <div id="latest-work" class="pull-right">
+       <div class="shape"></div>
+        <h3><a href="{% url 'gallery' %}">GALLERY</a></h3>
+        <!-- <img src="{{images.0}}" width="80" height="61"> -->
+        <img src="{% static 'images/latest2.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest3.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest4.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest5.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest6.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest7.png' %}" width="80" height="61" alt="latest pictures">
+        <!-- <img src="{% static 'images/latest8.png' %}" width="80" height="61" alt="latest pictures"> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endif %}
 
 {% endblock %}
 

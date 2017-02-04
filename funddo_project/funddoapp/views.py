@@ -13,19 +13,12 @@ from django.core.mail import send_mail
 from braces.views import LoginRequiredMixin
 from django.contrib.auth import update_session_auth_hash
 from django.views.generic import FormView
+import urllib2
+import json
 # Create your views here.
 
 def index(request):
 	return render(request, 'index.html')
-
-def about(request):
-	return render(request, 'about.html')
-
-def jobseekers(request):
-	return render(request, 'jobseekers.html')
-
-def funders(request):
-	return render(request, 'funders.html')
 
 def home(request):
 	context_dict = {}
@@ -35,20 +28,52 @@ def home(request):
 	
 	return render(request, 'home.html', context_dict)
 
+def about(request):
+	return render(request, 'about.html')
+
+# def jobseekers(request):
+# 	return render(request, 'jobseekers.html')
+
+# def funders(request):
+# 	return render(request, 'funders.html')
+
+def jobseekers(request):
+	context_dict = {}
+	user_location = UserProfile.objects.order_by('your_location')
+	context_dict['user_location']= user_location
+	
+	return render(request, 'jobseekers.html', context_dict)
+
+def funders(request):
+	context_dict = {}
+	user_location = UserProfile.objects.order_by('your_location')
+	context_dict['user_location']= user_location
+	
+	return render(request, 'funders.html', context_dict)
+
+# def base(request):
+# 	url = "https://www.instagram.com/fund_dos/media/"
+# 	json_obj = urllib2.urlopen(url)
+# 	data = json.load(json_obj)
+# 	images = []
+# 	for i in data ['items']:
+# 		images.append(i['images']['standard_resolution']['url'])
+# 	return render(request, 'base.html', {'images':images})
+
 def gallery(request):
-	return render(request, 'gallery.html')
+	url = "https://www.instagram.com/fund_dos/media/"
+	json_obj = urllib2.urlopen(url)
+	data = json.load(json_obj)
+	images = []
+	for i in data ['items']:
+		images.append(i['images']['standard_resolution']['url'])
+	return render(request, 'gallery.html', {'images':images})
 
 def contact(request):
 	return render(request, 'contact.html')
 
 
-def userbylocation(request):
-	context_dict = {}
-	user_location = UserProfile.objects.order_by('your_location')
 
-	context_dict['user_location']= user_location
-	
-	return render(request, 'user_location.html', context_dict)
 
 @login_required
 def make_request(request):
@@ -175,6 +200,7 @@ def user_login(request):
 
 	else:
 		return render(request, 'login.html', {})
+
 def user_logout(request):
 	logout(request)
 	return HttpResponseRedirect('/')
@@ -187,6 +213,7 @@ def user_profile(request, user_username):
 	context_dict['requests'] = Request.objects.filter(poster=user)
 
 	return render(request, 'profile.html', context_dict)
+
 @login_required
 def edit_funderprofile(request, user_username):
 	profile = get_object_or_404(UserProfile, user__username=user_username)
@@ -199,6 +226,7 @@ def edit_funderprofile(request, user_username):
 	if request.method == 'POST':
 		form = UserFunderForm(data=request.POST)
 		if form.is_valid():
+			
 			if request.POST['services'] and request.POST['services'] != '':
 				profile.services = request.POST['services']
 			else:
@@ -266,7 +294,7 @@ class SettingsView(LoginRequiredMixin, FormView):
 	def form_valid(self, form):
 		form.save()
 		update_session_auth_hash(self, request, form.user)
-		return super(SettubgView, self).form_valid(form)
+		return super(SettingView, self).form_valid(form)
 
 class PasswordRecoveryView(FormView):
 	template_name = "password-recovery.html"

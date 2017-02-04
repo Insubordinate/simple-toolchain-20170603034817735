@@ -4,8 +4,6 @@ from funddoapp.location import LOCATION_CHOICES
 from django.utils.timezone import now
 # Create your models here.
 
-
-
 class UserProfile(models.Model):
 	user = models.OneToOneField(User)
 	picture = models.ImageField(upload_to='profile_images', blank=True)

@@ -5,6 +5,8 @@
 </head>
 {% block body_block %}
 
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"> -->
+
 <!-- <div id="loader-wrapper">
     <div id="loader"></div>
     <div class="loader-section section-left"></div>
@@ -35,319 +37,115 @@
         <div class="causes-nav">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                  <div class="wrapper">
-                    <ul id="portfolio-filter">
-                        <li class="current"><a href="#all" title="">All</a></li>
-                        <li><a href="#orphans" title="" rel="orphans">Male</a></li>
-                        <li><a href="#cancer" title="" rel="cancer">Female</a></li>
-                    </ul>
-                  </div>
-              </div>
-             </div> 
-         <div class="row"> 
-             <div class="col-md-12 col-sm-12 col-xs-12"> 
+                    <div class="wrapper">
+                        <ul id="portfolio-filter">
+                            <li class="current"><a href="#all" title="">All</a></li>
+                            <li><a href="#bronx" title="" rel="bronx">Bronx</a></li>
+                            <li><a href="#manhattan" title="" rel="manhattan">Manhattan</a></li>
+                            <li><a href="#queens" title="" rel="queens">Queens</a></li>
+                            <li><a href="#brooklyn" title="" rel="brooklyn">Brooklyn</a></li>
+                            <li><a href="#statenisland" title="" rel="statenisland">Staten Island</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- ./row -->
+
+            <div class="row"> 
+                <div class="col-md-12 col-sm-12 col-xs-12"> 
                
                    <ul id="portfolio-list">
-    
-                        <li style="display: block;" class="cleanwater jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%">
+                        
+                        {% for user in user_location %}
+                        {% if user.your_location = 1 and user.jobseeker = True %}
+                        <li style="display: block;" class="brooklyn jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%">
+                            <div class="description">
+                                <span class="description-pics"> 
+                                <img src="{{user.picture.url}}">
+                                </span>
+                                    <div class="detail text-center">
+                                        <h2>{{user}}</h2>
+                                        <p>{{user.bio}}</p>
+                                        <a href="{% url 'profile' user %}">Profile</a>
+                                    </div>
+                            </div>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% for user in user_location %}
+                        {% if user.your_location = 2 and user.jobseeker = True %}
+                        <li style="display: block;" class="queens jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="85%">
                           <div class="description">
                                 <span class="description-pics"> 
-                                <img src="{% static 'images/cleanwater1.png' %}" alt="" class="img-responsive update-parent">
+                                <img src="{{user.picture.url}}">
                                 </span>
-                                   <div class="detail text-center">
-                                      <h2>Help to get Clean Water</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
+                                    <div class="detail text-center">
+                                        <h2>{{user}}</h2>
+                                        <p>{{user.bio}}</p>
+                                        <a href="{% url 'profile' user %}">Profile</a>
+                                    </div>
                             </div>
                         </li>
-                        
-                        <li style="display: block;" class="cleanwater jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="85%"> 
-                            <div class="description">
-                            <span class="description-pics"> 
-                            <img src="{% static 'images/cleanwater2.png' %}" alt="" class="img-responsive update-parent">
-                            </span>
-                                <div class="detail text-center">
-                                      <h2>Help to get Clean Water</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
-                            </div>
-                        </li>
-                        
-                        <li class="education jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="80%">
-                            <div class="description">
+                        {% endif %}
+                        {% endfor %}
+
+                        {% for user in user_location %}
+                        <li style="display: block;" class="manhattan jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="80%">
+                          <div class="description">
                                 <span class="description-pics"> 
-                            <img src="{% static 'images/cause1.png' %}" alt="sauses" class="img-responsive update-parent"> 
+                                {% if user.your_location = 3 and user.jobseeker = True %}
+                                <img src="{{user.picture.url}}">
                                 </span>
-                            
-                                <div class="detail text-center">
-                                      <h2>Help girls to get Education</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum  
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
+                                    <div class="detail text-center">
+                                        <h2>{{user}}</h2>
+                                        <p>{{user.bio}}</p>
+                                        <a href="{% url 'profile' user %}">Profile</a>
+                                    </div>
+                                {% endif %}
                             </div>
                         </li>
-                      
-                        <li class="education jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%"> 
-                            <div class="description">
-                                <span class="description-pics">
-                            <img src="{% static 'images/cause2.png' %}" alt="sauses" class="img-responsive update-parent">
-                                </span>
-                                <div class="detail text-center">
-                                      <h2>Help girls to get Education</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
-                            </div>
-                        </li>
-                    
-                        <li class="education jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="85%">
-                            <div class="description">
-                                <span class="description-pics">
-                            <img src="{% static 'images/cause3.png' %}" alt="sauses" class="img-responsive update-parent">
-                                </span>
-                                <div class="detail text-center">
-                                      <h2>Help girls to get Education</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
-                            </div>
-                        </li>
+                        {% endfor %}
 
-                        
-                        <li class="orphans jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%"> 
-                            <div class="description">
-                                <span class="description-pics">
-                            <img src="{% static 'images/orphan1.png' %}" alt="sauses" class="img-responsive update-parent">
+                        {% for user in user_location %}
+                        <li style="display: block;" class="bronx jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%">
+                          <div class="description">
+                                <span class="description-pics"> 
+                                {% if user.your_location = 4 and user.jobseeker = True %}
+                                <img src="{{user.picture.url}}">
                                 </span>
-                                <div class="detail text-center">
-                                      <h2>Help girls to get Education</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
+                                    <div class="detail text-center">
+                                        <h2>{{user}}</h2>
+                                        <p>{{user.bio}}</p>
+                                        <a href="{% url 'profile' user %}">Profile</a>
+                                    </div>
+                                {% endif %}
                             </div>
                         </li>
-                        
-                        <li class="cleanwater jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="85%"> 
-                            <div class="description">
-                            <span class="description-pics"> 
-                            <img src="{% static 'images/cleanwater3.png' %}" alt="" class="img-responsive update-parent">
-                            </span>
-                                <div class="detail text-center">
-                                      <h2>Help to get Clean Water</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
-                            </div>
-                        </li>
+                        {% endfor %}
 
-                        <li class="cleanwater jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="80%"> 
-                            <div class="description">
-                            <span class="description-pics"> 
-                            <img src="{% static 'images/cleanwater4.png' %}" alt="" class="img-responsive update-parent">
-                            </span>
-                                <div class="detail text-center">
-                                      <h2>Help to get Clean Water</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
+                        {% for user in user_location %}
+                        <li style="display: block;" class="statenisland jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="80%">
+                          <div class="description">
+                                <span class="description-pics"> 
+                                {% if user.your_location = 5 and user.jobseeker = True %}
+                                <img src="{{user.picture.url}}">
+                                </span>
+                                    <div class="detail text-center">
+                                        <h2>{{user}}</h2>
+                                        <p>{{user.bio}}</p>
+                                        <a href="{% url 'profile' user %}">Profile</a>
+                                    </div>
+                                {% endif %}
                             </div>
                         </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div><!-- ./row -->
+        </div><!-- ./nav -->
 
-                        
-                        <li class="orphans jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%"> 
-                            <div class="description">
-                                <span class="description-pics">
-                            <img src="{% static 'images/orphans2.png' %}" alt="sauses" class="img-responsive update-parent">
-                                </span>
-                                <div class="detail text-center">
-                                      <h2>Help to Orphans</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
-                            </div>
-                        </li>
-                        
-                        <li class="cleanwater jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="85%"> 
-                            <div class="description">
-                            <span class="description-pics"> 
-                            <img src="{% static 'images/cleanwater5.png' %}" alt="" class="img-responsive update-parent">
-                            </span>
-                                <div class="detail text-center">
-                                      <h2>Help to get Clean Water</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
-                            </div>
-                        </li>
-                        
-                        <li class="education jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="80%"> 
-                            <div class="description">
-                                <span class="description-pics">
-                            <img src="{% static 'images/cause4.png' %}" alt="sauses" class="img-responsive update-parent">
-                                </span>
-                                <div class="detail text-center">
-                                      <h2>Help girls to get Education</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
-                            </div>
-                        </li>
-                        
-                        <li class="education jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%"> 
-                            <div class="description">
-                                <span class="description-pics">
-                            <img src="{% static 'images/ause5.png' %}" alt="sauses" class="img-responsive update-parent">
-                                </span>
-                                <div class="detail text-center">
-                                      <h2>Help girls to get Education</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
-                            </div>
-                        </li>
-                        
-                        <li class="education jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="85%">
-                            <div class="description">
-                                <span class="description-pics">
-                            <img src="{% static 'images/cause6.png' %}" alt="sauses" class="img-responsive update-parent">
-                                </span>
-                                <div class="detail text-center">
-                                      <h2>Help girls to get Education</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
-                            </div>
-                        </li>
-                        
-                        <li class="cancer jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="80%"> 
-                            <div class="description">
-                                <span class="description-pics">
-                            <img src="{% static 'images/cancer1.png' %}" alt="sauses" class="img-responsive update-parent">
-                                </span>
-                                <div class="detail text-center">
-                                      <h2>Air Pulotion</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
-                            </div>
-                        </li>
 
-                        
-                        <li class="orphans jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%"> 
-                            <div class="description">
-                                <span class="description-pics">
-                            <img src="{% static 'images/orphans3.png' %}" alt="sauses" class="img-responsive update-parent">
-                                </span>
-                                <div class="detail text-center">
-                                      <h2>Help to Orphans</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
-                            </div>
-                        </li>
-                        
-                        <li class="cleanwater jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="85%"> 
-                            <div class="description">
-                            <span class="description-pics"> 
-                            <img src="{% static 'images/cleanwater6.png' %}" alt="" class="img-responsive update-parent">
-                            </span>
-                                <div class="detail text-center">
-                                      <h2>Help to get Clean Water</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
-                            </div>
-                        </li>
-                        
-                        <li class="cancer jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="80%"> 
-                            <div class="description">
-                                <span class="description-pics">
-                            <img src="{% static 'images/cancer2.png' %}" alt="sauses" class="img-responsive update-parent">
-                                </span>
-                                <div class="detail text-center">
-                                      <h2>Air Pulotion</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
-                            </div>
-                        
-                        </li>
-                        
-                        <li class="cancer jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%">
-                            <div class="description">
-                                <span class="description-pics">
-                            <img src="{% static 'images/cancer2.png' %}" alt="sauses" class="img-responsive update-parent">
-                                </span>
-                                <div class="detail text-center">
-                                      <h2>Air Pulotion</h2>
-                                        <p><strong>Donation :</strong> $78,354 / $1,26,500</p>
-                                        <p>
-                                        orem ipsum dolor sit amet, consecte tur scing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum 
-                                        </p>
-                                        <a href="#">Profile</a>
-                                     </div>
-                            </div>
-                        </li>
-                   </ul>
-    
-            </div>  
-        </div>      
-       </div>
- 
-        
+
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="pages text-center jw-animate-gen noOpacity" data-gen="fadeInDown" data-gen-offset="75%">
@@ -392,6 +190,69 @@
             </div>
         </div>
     </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-4 col-xs-12 jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="80%">
+          <div class="shape"></div>
+           <div id="donate">
+           <div class="logo">
+           <img src="{% static 'images/donate.png' %}" alt="logo goes here">
+           </div>
+           <p>
+            lorem ipsum dolor sit amet, consecte tur adipiscing elit.
+            Nulla ornare port titor diam, a accumsan justo laoreet.
+            Lorem ipsum dolor sit amet, consecte.
+           </p>
+           
+           <span class="glyphicon glyphicon-home pull-left"></span>
+             <address>2, Sector-63, Noida, 201301, Africa</address>
+           
+           <span class="glyphicon glyphicon-envelope pull-left"></span>
+            <em>123 900 123 456</em>
+           <br>
+           <span class="glyphicon glyphicon-earphone pull-left"></span>
+            <a href="#">contact@donate.com</a> 
+           <div class="shape"></div>
+           </div>
+      </div>
+      
+      <div class="col-md-3 col-sm-4 col-xs-12 col-md-offset-1 jw-animate-gen noOpacity" data-gen="fadeInUp" data-gen-offset="85%"> <!--for twitter feed columns-->
+       <div id="twitter">
+       <div class="shape"></div>
+        <h3>INSTAGRAM FEED</h3>
+        <p>
+        <a href="#">@donate</a> Various versions have evolved over the years, 
+        sometimes by accident, 
+        sometimes on purpos. <br>
+         <strong>2 hours ago </strong>
+        </p>
+        <p>
+        <a href="#">@donate</a> Various versions have evolved over the years, 
+        sometimes by accident, 
+        sometimes on purpos.<br> 
+        <strong>2 hours ago </strong> 
+        </p>
+       </div>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-1 jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="75%">
+      <div id="latest-work" class="pull-right">
+       <div class="shape"></div>
+        <h3><a href="{% url 'gallery' %}">GALLERY</a></h3>
+        <!-- <img src="{{images.0}}" width="80" height="61"> -->
+        <img src="{% static 'images/latest2.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest3.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest4.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest5.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest6.png' %}" width="80" height="61" alt="latest pictures">
+        <img src="{% static 'images/latest7.png' %}" width="80" height="61" alt="latest pictures">
+        <!-- <img src="{% static 'images/latest8.png' %}" width="80" height="61" alt="latest pictures"> -->
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 
