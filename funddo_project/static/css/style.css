@@ -120,7 +120,7 @@ body{
          url('../fonts/opensans-light.svg#OpenSansLight') format('svg');
 }
 
-h1{font-size:34px; }
+h1{font-size:34px; text-align: center; }
 a:hover , a:focus{ text-decoration:none; }
 
 .padding{ padding-left:6%; padding-right:6%; }
@@ -745,8 +745,8 @@ footer{
 	position: fixed;
 	width: 100%;
 	bottom: 0;
-	background:#ffff00;
-	color:#000;
+	background:#351c4d;
+	color:#fff;
 	text-align:center;
 	padding-bottom:1%;
 	padding-top:1%;
@@ -911,9 +911,9 @@ ul#portfolio-filter li a {
 }
 ul#portfolio-filter > li > a.current, ul#portfolio-filter  > li a:hover , 
 ul#portfolio-filter > li > a.current:focus{ 
-	color:#333333; 
+	color:#fff; 
 	font-size:18px; 
-	background:#fefe00 !important;
+	background:#351c4d !important;
 	transition:all 0.5s ease-in-out 0.1s;
 }
 
@@ -993,7 +993,7 @@ ul#portfolio-list li {
 }
 
 .pages .pagination > li a{
-	background:#333333;
+	background:#351c4d;
 	color:#fff;
 	font-size:18px;
 }

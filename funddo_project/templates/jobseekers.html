@@ -40,11 +40,12 @@
                     <div class="wrapper">
                         <ul id="portfolio-filter">
                             <li class="current"><a href="#all" title="">All</a></li>
-                            <li><a href="#bronx" title="" rel="bronx">Bronx</a></li>
-                            <li><a href="#manhattan" title="" rel="manhattan">Manhattan</a></li>
                             <li><a href="#queens" title="" rel="queens">Queens</a></li>
-                            <li><a href="#brooklyn" title="" rel="brooklyn">Brooklyn</a></li>
-                            <li><a href="#statenisland" title="" rel="statenisland">Staten Island</a></li>
+                        <li><a href="#manhattan" title="" rel="manhattan">Manhattan</a></li>
+                        <li><a href="#brooklyn" title="" rel="brooklyn">Brooklyn</a></li>
+                        <li><a href="#statenisland" title="" rel="statenisland">Staten Island</a></li>
+                        <li><a href="#bronx" title="" rel="bronx">Bronx</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -54,91 +55,101 @@
                 <div class="col-md-12 col-sm-12 col-xs-12"> 
                
                    <ul id="portfolio-list">
-                        
-                        {% for user in user_location %}
-                        {% if user.your_location = 1 and user.jobseeker = True %}
-                        <li style="display: block;" class="brooklyn jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%">
+
+                        <div class="brooklyn">
+                          {% for user in user_location %}
+                          {% if user.your_location = 1 and user.jobseeker = True %}
+                            <li style="display: block;" jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%">
+                                <div class="description">
+                                    <span class="description-pics"> 
+                                    <img src="{{user.picture.url}}">
+                                    </span>
+                                        <div class="detail text-center">
+                                            <h2>{{user}}</h2>
+                                            <p>{{user.bio}}</p>
+                                            <a href="{% url 'profile' user %}">Profile</a>
+                                        </div>
+                                </div>
+                            </li>
+                          {% endif %}
+                          {% endfor %}
+                        </div>
+
+                        <div class="queens">
+                          {% for user in user_location %}
+                          {% if user.your_location = 2 and user.jobseeker = True %}
+                            <li style="display: block;" class="jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="85%">
+                              <div class="description">
+                                    <span class="description-pics"> 
+                                    <img src="{{user.picture.url}}">
+                                    </span>
+                                        <div class="detail text-center">
+                                            <h2>{{user}}</h2>
+                                            <p>{{user.bio}}</p>
+                                            <a href="{% url 'profile' user %}">Profile</a>
+                                        </div>
+                                </div>
+                            </li>
+                          {% endif %}
+                          {% endfor %}
+                        </div>
+
+                        <div class="manhattan">
+                          {% for user in user_location %}
+                          {% if user.your_location = 3 and user.jobseeker = True %}
+                            <li style="display: block;" class="jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="80%">
+                              <div class="description">
+                                    <span class="description-pics"> 
+                                    <img src="{{user.picture.url}}">
+                                    </span>
+                                        <div class="detail text-center">
+                                            <h2>{{user}}</h2>
+                                            <p>{{user.bio}}</p>
+                                            <a href="{% url 'profile' user %}">Profile</a>
+                                        </div>
+                                </div>
+                            </li>
+                          {% endif %}
+                          {% endfor %}
+                        </div>
+
+                        <div class="bronx">
+                          {% for user in user_location %}
+                          {% if user.your_location = 4 and user.jobseeker = True %}
+                            <li style="display: block;" class="jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%">
+                              <div class="description">
+                                    <span class="description-pics"> 
+                                    <img src="{{user.picture.url}}">
+                                    </span>
+                                        <div class="detail text-center">
+                                            <h2>{{user}}</h2>
+                                            <p>{{user.bio}}</p>
+                                            <a href="{% url 'profile' user %}">Profile</a>
+                                        </div>
+                                  </div>
+                            </li>
+                          {% endif %}
+                          {% endfor %}
+                        </div>
+
+                        <div class="statenisland">
+                          {% for user in user_location %}
+                          {% if user.your_location = 5 and user.jobseeker = True %}
+                          <li style="display: block;" jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="80%">
                             <div class="description">
-                                <span class="description-pics"> 
-                                <img src="{{user.picture.url}}">
-                                </span>
-                                    <div class="detail text-center">
-                                        <h2>{{user}}</h2>
-                                        <p>{{user.bio}}</p>
-                                        <a href="{% url 'profile' user %}">Profile</a>
-                                    </div>
-                            </div>
-                        </li>
-                        {% endif %}
-                        {% endfor %}
-
-                        {% for user in user_location %}
-                        {% if user.your_location = 2 and user.jobseeker = True %}
-                        <li style="display: block;" class="queens jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="85%">
-                          <div class="description">
-                                <span class="description-pics"> 
-                                <img src="{{user.picture.url}}">
-                                </span>
-                                    <div class="detail text-center">
-                                        <h2>{{user}}</h2>
-                                        <p>{{user.bio}}</p>
-                                        <a href="{% url 'profile' user %}">Profile</a>
-                                    </div>
-                            </div>
-                        </li>
-                        {% endif %}
-                        {% endfor %}
-
-                        {% for user in user_location %}
-                        <li style="display: block;" class="manhattan jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="80%">
-                          <div class="description">
-                                <span class="description-pics"> 
-                                {% if user.your_location = 3 and user.jobseeker = True %}
-                                <img src="{{user.picture.url}}">
-                                </span>
-                                    <div class="detail text-center">
-                                        <h2>{{user}}</h2>
-                                        <p>{{user.bio}}</p>
-                                        <a href="{% url 'profile' user %}">Profile</a>
-                                    </div>
-                                {% endif %}
-                            </div>
-                        </li>
-                        {% endfor %}
-
-                        {% for user in user_location %}
-                        <li style="display: block;" class="bronx jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="90%">
-                          <div class="description">
-                                <span class="description-pics"> 
-                                {% if user.your_location = 4 and user.jobseeker = True %}
-                                <img src="{{user.picture.url}}">
-                                </span>
-                                    <div class="detail text-center">
-                                        <h2>{{user}}</h2>
-                                        <p>{{user.bio}}</p>
-                                        <a href="{% url 'profile' user %}">Profile</a>
-                                    </div>
-                                {% endif %}
-                            </div>
-                        </li>
-                        {% endfor %}
-
-                        {% for user in user_location %}
-                        <li style="display: block;" class="statenisland jw-animate-gen noOpacity" data-gen="fadeIn" data-gen-offset="80%">
-                          <div class="description">
-                                <span class="description-pics"> 
-                                {% if user.your_location = 5 and user.jobseeker = True %}
-                                <img src="{{user.picture.url}}">
-                                </span>
-                                    <div class="detail text-center">
-                                        <h2>{{user}}</h2>
-                                        <p>{{user.bio}}</p>
-                                        <a href="{% url 'profile' user %}">Profile</a>
-                                    </div>
-                                {% endif %}
-                            </div>
-                        </li>
-                        {% endfor %}
+                                  <span class="description-pics">
+                                  <img src="{{user.picture.url}}">
+                                  </span>
+                                      <div class="detail text-center">
+                                          <h2>{{user}}</h2>
+                                          <p>{{user.bio}}</p>
+                                          <a href="{% url 'profile' user %}">Profile</a>
+                                      <</div>
+                                  </div>
+                            </li>
+                          {% endif %}
+                          {% endfor %}
+                        </div>
                     </ul>
                 </div>
             </div><!-- ./row -->
