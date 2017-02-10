@@ -18,14 +18,14 @@ class UserJobSeekerForm(forms.ModelForm):
 	your_location = forms.ChoiceField(choices= LOCATION_CHOICES, widget=forms.Select(), required=True)
 	class Meta:
 		model = UserProfile
-		fields = ('picture', 'bio')
+		fields = ('picture', 'bio', 'your_location')
 		exclude = ('funder', 'services', 'jobseeker' )
 
 class UserFunderForm(forms.ModelForm):
 	your_location = forms.ChoiceField(choices= LOCATION_CHOICES, widget=forms.Select(), required=True)
 	class Meta:
 		model = UserProfile
-		fields = ('picture', 'services', 'bio')
+		fields = ('picture', 'services', 'bio', 'your_location')
 		exclude = ('jobseeker', 'funder' )
 
 class RequestForm(forms.ModelForm):
@@ -100,5 +100,30 @@ class PasswordRecoveryForm(forms.Form):
 				""".format(username=user.username, password=password)
 
 		pw_msg = EmailMessage('Your new password', body, 'Mholliday6611@gmail.com', [user.email])
+
+		pw_msg.send()
+
+	def reset_password(self):
+		
+		user = self.cleaned_data['email']
+
+		password = get_random_string(length=8)
+
+		user.set_password(password)
+
+		user.save()
+
+		body = """
+				Sorry you are having issues with your account! Below is your user name and new password
+
+				Username: {username}
+				Password: {password}
+
+				You can log in here: http://localhost:8000/login/
+				You can change your password here: http://localhost:8000/settings/
+
+				""".format(username=user.username, password=password)
+
+		pw_msg = EmailMessage('Your new password', body, 'jenpaulino3@gmail.com', [user.email])
 
 		pw_msg.send()

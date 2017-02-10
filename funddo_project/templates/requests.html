@@ -1,12 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
-
-<head>
-	<title></title>
-</head>
+  <head>
+    <title>{% block title %}Reply to Jobseeker{% endblock %}</title>
+  </head>
 {% block body_block %}
-<p>{{ req.poster }}'s Post </p>
-<h1>{{ req.title }}</h1>
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/requests.css' %}">
+
+<section class="grey">
+      <div class="container">
+          <div class="row">
+              <div class="top-nav2">
+                  <div class="col-md-9 col-sm-9 col-xs-6 jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="50%">
+                  <span class="heading">{{ req.poster }}'s Post</span>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-6 text-right jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="50%">
+                  <span class="inner-link">
+                  <a href="index.html">Home <i class="fa fa-angle-double-right"></i></a>
+                 </span>
+                  <span class="inner-link">Reply to Jobseeker</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+<h3>{{ req.title }}</h3>
 
 <p>{{ req.request }}</p>
 

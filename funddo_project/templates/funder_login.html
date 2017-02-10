@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+  <head>
+    <title>{% block title %}Fund Do's Home{% endblock %}</title>
+  </head>
+{% block body_block %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/funder_login.css' %}">
+
+<!-- <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+      <div class="load_title">Fund Do's</div>
+  </div> -->
+
+  <section class="grey">
+      <div class="container">
+          <div class="row">
+              <div class="top-nav2">
+                  <div class="col-md-9 col-sm-9 col-xs-6 jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="50%">
+                  <span class="heading">{% if user.is_authenticated %}{{user.username}}'s Dashboard{% endif %}</span>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-6 text-right jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="50%">
+                  <span class="inner-link">
+                  <a href="index.html">Home <i class="fa fa-angle-double-right"></i></a>
+                 </span>
+                  <span class="inner-link">Dashboard</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+<div class="row">
+  <div class="col-sm-6 col-md-6 col-xs-12">
+    <div class="request">
+      <h1>Recent Jobseeker Requests</h1>
+        <u1 class="list-group">
+          {% for req in recent_requests %}
+          <li class="list-group-item">
+            <a href="/requests/{{req.id}}"><p><b>{{ req.title }}</b></p></a><br>
+            <p>{{ req.request }}</p>
+            <a href="{% url 'profile' req.poster %}"><p style="text-align: right;">-{{ req.poster }}'s Profile</p></a>
+          </li>
+          {% endfor %}
+        </u1>
+    </div><!-- ./request -->
+
+
+  </div>
+
+  <div class="col-sm-6 col-md-6 col-xs-12">
+    <figure class="snip0064">
+      <figcaption>
+        <p>Thank You for joining Fund Do's and contributing to life changing opportunities. View recent requests and select one to connect with a jobseeker. Happy Funding!</p>
+        <h2>Welcome <span>{{user.username}}</span></h2>
+            <span class="position">
+            <a href="{% url 'edit_jobseekerprofile' user.username %}"><i class="fa fa-user fa-lg"></i> Edit Profile</a><a href="{% url 'edit_jobseekerprofile' user.username %}"><i class="fa fa-key"></i> Change Password</a>
+        </span>
+      </figcaption>
+      <div class="image">
+        <img src="https://s-media-cache-ak0.pinimg.com/originals/cb/57/36/cb57366593c06af4b837821f5484d084.jpg" alt="sample10" />
+      </div>
+      <a href="#"></a>
+    </figure>
+  <a href="{% url 'jobseekers' %}"><h2 style="text-align:center; color: #8500df;">Browse Jobseekers by Location</h2></a>
+</div>
+{% endblock %}

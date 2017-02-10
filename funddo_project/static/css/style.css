@@ -336,7 +336,7 @@ hr{
 
 
 .yellow-diamond{
-	 background: #ffff00;
+	 background: #fff;
 }
 .yellow-diamond:before{
       	background:#ffff00;
@@ -372,7 +372,7 @@ hr{
     width: 100%;
 }
 .child-pics .yellowbox{
-	background:#ffff00;
+	background:#8500df;
 	color::#282828;
 	padding:7%;
 	position:relative;
@@ -389,7 +389,7 @@ hr{
 }
 .child-pics .yellowbox a{
 	display:block;
-	color:#333333;
+	color:#fff;
 }
 .child-pics .yellowbox a:hover{
 	text-decoration:underline;
@@ -403,6 +403,7 @@ hr{
 	font-family:'PTSans-Regular';
 	font-size:16px;
 	line-height:23px;
+	color: #fff;
 }
 .child-pics .imgbox{
 	width:100%;
@@ -416,7 +417,13 @@ hr{
 	
 }
 .need-help{
-	background: url("../images/testinomial-bg.jpg") no-repeat fixed center;
+	background:
+    linear-gradient(
+      rgba(254, 180, 123, 0.7), 
+      rgba(254, 180, 123, 0.7)
+    ),
+    url("http://www.frontrangestaffing.com/wp-content/uploads/2016/06/jobseekers.jpg") no-repeat fixed center;
+	/*background: url("http://www.frontrangestaffing.com/wp-content/uploads/2016/06/jobseekers.jpg") no-repeat fixed center;*/
 	color:#fff;
 	padding-bottom:4%;
 	padding-top:5%;
@@ -426,7 +433,7 @@ hr{
 
 
 .need-help h1{
-	color:#ffff00;
+	color:#fff;
 	font-size:34px;
 	margin-top:0;
 }
@@ -435,6 +442,7 @@ hr{
 }
 .need-help h4 , .need-help p{
 	font-size:16px;
+	font-size: 24px;
 }
 .need-help p{
 	line-height:23px;
@@ -454,7 +462,7 @@ hr{
 .diamond{
      width: 80px;
 	 height:80px; 
-	  border:2px solid #ffff00; 
+	  border:2px solid #ff7e5f; 
       transform:rotate(45deg);
       -ms-transform:rotate(45deg);
       -webkit-transform:rotate(45deg);
@@ -493,8 +501,15 @@ hr{
 /* ====== MOST RECENT UPDATES ====== */
 
 #recents{
-   background: url("../images/update-bg.png") no-repeat fixed center top rgba(0, 0, 0, 0);
-    height: 100%;
+	background: 
+    /* top, transparent red, faked with gradient */ 
+    linear-gradient(
+      rgba(133, 0, 223, 0.45), 
+      rgba(133, 0, 223, 0.45)
+    ),
+    /* bottom, image */
+    url("../images/indexfeatures.jpg");
+    height: 150%;
     min-height: 700px;
     padding-bottom:3%;
     padding-top:2%;
@@ -536,7 +551,7 @@ hr{
 }
 #recents .update-white span .fa{
 	font-size:34px;
-	background:#fff000;
+	background:#feb47b;
 	border:2px solid #333;
 	border-radius:78px;
 	height:78px;
@@ -742,17 +757,17 @@ hr{
 
 /* ====== FOOTER ===== */
 footer{
-	position: fixed;
+	position: relative;
 	width: 100%;
 	bottom: 0;
-	background:#351c4d;
+	background:#8500df;
 	color:#fff;
 	text-align:center;
 	padding-bottom:1%;
 	padding-top:1%;
 }
 footer p{
-	margin:0;  626262
+	margin:0;
 }
 
 #twitter strong{
@@ -793,6 +808,7 @@ footer p{
 	list-style-position:inside; 
 	margin:0;
 	padding:0; 
+	text-align: center;
 }
 .who-we-are ul li{
 	color:#5a5a5a;

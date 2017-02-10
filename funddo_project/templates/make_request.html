@@ -1,9 +1,30 @@
+{% extends 'base.html' %}
 {% load static %}
-
-<head>
-	<title>{% block title %}Make a Request{% endblock %}</title>
-</head>
+  <head>
+    <title>{% block title %}Fund Do's Home{% endblock %}</title>
+  </head>
 {% block body_block %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/funder_login.css' %}">
+
+<section class="grey">
+      <div class="container">
+          <div class="row">
+              <div class="top-nav2">
+                  <div class="col-md-9 col-sm-9 col-xs-6 jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="50%">
+                  <span class="heading">{{user.username}}'s Post</span>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-6 text-right jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="50%">
+                  <span class="inner-link">
+                  <a href="index.html">Home <i class="fa fa-angle-double-right"></i></a>
+                 </span>
+                  <span class="inner-link">Post to Funders</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
 <h1>New post</h1>
     <form method="POST" class="RequestForm">{% csrf_token %}
         {{ form.as_p }}

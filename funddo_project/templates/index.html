@@ -14,48 +14,6 @@
       <div class="load_title">Fund Do's</div>
   </div> -->
 
-{% if user.is_authenticated %}
-
-  <section class="grey">
-      <div class="container">
-          <div class="row">
-              <div class="top-nav2">
-                  <div class="col-md-9 col-sm-9 col-xs-6 jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="50%">
-                  <span class="heading">Inbox</span>
-                  </div>
-                  <div class="col-md-3 col-sm-3 col-xs-6 text-right jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="50%">
-                  <span class="inner-link">
-                  <a href="index.html">Home <i class="fa fa-angle-double-right"></i></a>
-                 </span>
-                  <span class="inner-link">Inbox</span>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <div class="inbox">
-    <h1>Welcome <a href="{% url 'profile' user.username %}">{{user.username}}</a></h1><br>
-
-    <h1>Recent Requests</h1>
-      <u1 class="list-group">
-        {% for req in recent_requests %}
-        <li class="list-group-item"><a href="/requests/{{req.id}}"><p>{{ req.title }}</p></a></li>
-        {% endfor %}
-      </u1>
-      <br>
-      
-    <!--   {% if user == profile.funder %}
-        <a href="{% url 'jobseekers' %}">Jobseekers by location</a><br>
-      {% endif %}
-      {% if profile.jobseeker %}
-        <a href="{% url 'funders' %}">Funders by location</a><br>
-      {% endif %} -->
-  </div>
-
-{% else %}
-
-
 <section class="slider">
 
      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -171,11 +129,10 @@
               <div class="row">
               <div class="yellowbox">
                   <span><img src="{% static 'images/heart.png' %}" alt="heart"></span>
-                  <a href="{% static 'causes-detail.html' %}">helping children</a>
+                  <a href="{% static 'causes-detail.html' %}">Gift Hope</a>
                <p>
-                  Lorem ipsum dolor sit amet, consecte tur adipiscing elit. 
-                  Nulla ornare port titor diam, a accumsan justo laoreet.Lorem 
-                  ipsum dolor sit amet, consecte.
+                  Many job-seekers in underserved communities can barely afford transportation to interviews let alone a haircut and grooming services. With your help, they can focus their limited funds on getting to interviews.  
+
                   </p>
                   </div>
                 <span class="imgbox">
@@ -192,11 +149,9 @@
                </span>
                <div class="yellowbox">
                   <span><img src="{% static 'images/pencil.png' %}" alt="heart"></span>
-                  <a href="{% static 'causes-detail.html' %}">Education for all</a>
+                  <a href="{% static 'causes-detail.html' %}">Change Lives</a>
                <p>
-                  Lorem ipsum dolor sit amet, consecte tur adipiscing elit. 
-                  Nulla ornare port titor diam, a accumsan justo laoreet.Lorem 
-                  ipsum dolor sit amet, consecte.
+                  Fund someone’s do today, and help them look their best for their interview. A one time donation of your services can lead to possible employment for them, and to a possible long-term customer and advertiser for your establishment.
                   </p>
                   </div>
                   
@@ -206,11 +161,10 @@
              <div class="row">
               <div class="yellowbox">
                   <span><img src="{% static 'images/right-sign.png' %}" alt="heart"></span>
-                  <a href="{% static 'causes-detail.html' %}">Ensuring better life</a>
+                  <a href="{% static 'causes-detail.html' %}">Increase Confidence</a>
                <p>
-                  Lorem ipsum dolor sit amet, consecte tur adipiscing elit. 
-                  Nulla ornare port titor diam, a accumsan justo laoreet.Lorem 
-                  ipsum dolor sit amet, consecte.
+                  Dressing professionally can be expensive, but when you have a great haircut or hairdo you feel confident no matter what you’re wearing. Funding hair or grooming services can help take some pressure off of job-seekers who can’t buy their ideal interview outfit.
+
                   </p>
                   </div>
                   <span class="imgbox">
@@ -237,12 +191,7 @@
                      We need your help</h1>
                      <hr class="yellow-diamond">
                      
-                     <h4 class="jw-animate-gen noOpacity" data-gen="fadeInDown" data-gen-offset="80%">
-                      Let’s Stop This hunger and fullfill their happiness</h4>
-                     <p class="jw-animate-gen noOpacity" data-gen="fadeInUp" data-gen-offset="75%">
-                     Integer posuere erat a ante venenatis dapibus posuere velit aliquet. 
-                     Cum sociis natoque penatibus et magnis dis parturient montes, nascetur                 ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis                 consectetur purus sit amet fermentum
-                     </p>
+                     <h4 class="jw-animate-gen noOpacity" data-gen="fadeInDown" data-gen-offset="80%">Let's provide jobseekers with a wonderful transformation to land their interviews!</h4>
             </div>
         </div>
     </div>
@@ -253,45 +202,35 @@
   <div class="container">
     <div class="row">
     <div class="details clearfix">
-            <div class="col-md-3 col-sm-6 col-xs-12 text-center jw-animate-gen noOpacity" data-gen-offset="90%" data-gen="fadeInUp">
+            <div class="col-md-4 col-sm-4 col-xs-12 text-center jw-animate-gen noOpacity" data-gen-offset="90%" data-gen="fadeInUp">
               <div class="diamond">
               	<i class="fa fa-tasks"></i>
                
               </div>
               <div class="diamond-inner">
-                    <span class="stat-count highlight">58</span>
-                    <div class="milestone-details">Program</div>
+                    <span class="stat-count highlight">360</span>
+                    <div class="milestone-details">Salons/Barbershops</div>
                 </div>
               
             </div>
             
-            <div class="col-md-3 col-sm-6 col-xs-12 text-center jw-animate-gen noOpacity" data-gen-offset="85%" data-gen="fadeInUp">
-              <div class="diamond">
-              <i class="fa fa-child"></i>
-              </div>
-               <div class="diamond-inner">
-                 <span class="stat-count highlight">1458</span>
-                 <div class="milestone-details"><h6>children</h6></div> 
-                </div>
-            </div>
-            
-            <div class="col-md-3 col-sm-6 col-xs-12 text-center jw-animate-gen noOpacity" data-gen-offset="82%" data-gen="fadeInUp">
+            <div class="col-md-4 col-sm-4 col-xs-12 text-center jw-animate-gen noOpacity" data-gen-offset="82%" data-gen="fadeInUp">
               <div class="diamond">
                 <i class="fa fa-users"></i>
               </div>
               <div class="diamond-inner">
-                 <span class="stat-count highlight">590</span>
-                 <div class="milestone-details"><h6>Charitable</h6></div> 
+                 <span class="stat-count highlight">133</span>
+                 <div class="milestone-details"><h6>Jobseekers</h6></div> 
                 </div>
             </div>
             
-            <div class="col-md-3 col-sm-6 col-xs-12 text-center jw-animate-gen noOpacity" data-gen-offset="78%" data-gen="fadeInUp">
+            <div class="col-md-4 col-sm-4 col-xs-12 text-center jw-animate-gen noOpacity" data-gen-offset="78%" data-gen="fadeInUp">
               <div class="diamond">
               <i class="fa fa-usd"></i>
               </div>
               <div class="diamond-inner">
-                 <span class="stat-count highlight">2278</span>
-                 <div class="milestone-details"><h6>Donation</h6></div> 
+                 <span class="stat-count highlight">500</span>
+                 <div class="milestone-details"><h6>Interviews</h6></div> 
                 </div>
      
             </div>
@@ -316,13 +255,10 @@
                    </span>
                    <div class="update-white">
                    <span>
-                   <i class="fa fa-pencil"></i>
+                   <i class="fa fa-briefcase"></i>
                    </span>
-                   <h3>Care for children</h3>
-                   
-                   <p>
-                    Lorem ipsum dolor sit amet, consecte tur adipiscing elit.
-                     Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum dolor                 sit amet, consecte.
+                   <h3>Full Name</h3>
+                     <p> Bio <br> Position <br> Location <br>
                    </p>
                    <a href="{% url 'funder_profile' %}" target="_blank"> Read more</a>
                    </div>
@@ -334,12 +270,10 @@
                   </span>
                   <div class="update-white">
                      <span> 
-                     <i class="fa fa-home"></i>
+                     <i class="fa fa-briefcase"></i>
                      </span>
-                     <h3>Our Children Matter</h3>
-                     <p>
-                      Lorem ipsum dolor sit amet, consecte tur adipiscing elit.
-                     Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum dolor                 sit amet, consecte.
+                     <h3>Full Name</h3>
+                     <p> Bio <br> Position <br> Location <br> 
                      </p>
                      <a href="{% url 'funder_profile' %}" target="_blank"> Read more</a>
                   </div>
@@ -351,12 +285,10 @@
                   </span>
                   <div class="update-white">
                      <span> 
-                     <i class="fa fa-medkit"></i>
+                     <i class="fa fa-briefcase"></i>
                      </span>
-                     <h3>A Madical Post Format</h3>
-                     <p>
-                      Lorem ipsum dolor sit amet, consecte tur adipiscing elit.
-                     Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum dolor                 sit amet, consecte.
+                     <h3>Full Name</h3>
+                     <p> Bio <br> Position <br> Location <br> 
                      </p>
                      <a href="{% url 'funder_profile' %}" target="_blank"> Read more</a>
                   </div>
@@ -371,7 +303,7 @@
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <h1 class="jw-animate-gen noOpacity" data-gen="fadeInDown" data-gen-offset="90%">
-            Testimonals</h1>
+            Testimonials</h1>
                 <hr class="center-diamond">
         </div> 
         
@@ -421,7 +353,7 @@
           <div class="shape"></div>
            <div id="donate">
            <div class="logo">
-           <img src="{% static 'images/donate.png' %}" alt="logo goes here">
+           <img src="{% static 'images/logof.png' %}" alt="logo goes here">
            </div>
            <p>
             lorem ipsum dolor sit amet, consecte tur adipiscing elit.
@@ -430,13 +362,13 @@
            </p>
            
            <span class="glyphicon glyphicon-home pull-left"></span>
-             <address>2, Sector-63, Noida, 201301, Africa</address>
+             <address>1231 Lafayette Ave. Bronx, NY 10474</address>
            
            <span class="glyphicon glyphicon-envelope pull-left"></span>
-            <em>123 900 123 456</em>
+            <em>1800-FUND-DOS</em>
            <br>
            <span class="glyphicon glyphicon-earphone pull-left"></span>
-            <a href="#">contact@donate.com</a> 
+            <a href="#">funddos@gmail.com</a> 
            <div class="shape"></div>
            </div>
       </div>
@@ -476,8 +408,6 @@
     </div>
   </div>
 </section>
-
-{% endif %}
 
 {% endblock %}
 

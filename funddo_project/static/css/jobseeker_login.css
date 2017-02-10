@@ -1,0 +1,131 @@
+h2 {
+	margin-top: 10%;
+	margin-bottom: 15px;
+}
+
+footer{
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	background:#8500df;
+	color:#fff;
+	text-align:center;
+	padding-bottom:1%;
+	padding-top:1%;
+}
+
+figure.snip0045 {
+  font-family: 'Raleway', Arial, sans-serif;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 25px 1%;
+  min-width: 380px;
+  max-width: 600px;
+  width: 100%;
+  background: #ffffff;
+  color: #000000;
+  margin-left: 25px;
+}
+figure.snip0045 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+figure.snip0045 > img {
+  width: 50%;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  -webkit-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+  -webkit-transform: scale(1.6);
+  transform: scale(1.6);
+  position: relative;
+  left: -15%;
+  z-index: 1;
+}
+figure.snip0045 figcaption {
+  padding: 20px 30px 20px 20px;
+  position: absolute;
+  right: 0;
+  width: 50%;
+}
+figure.snip0045 figcaption h1,
+figure.snip0045 figcaption p {
+  margin: 0;
+  text-align: right;
+  padding: 10px 0;
+  width: 100%;
+}
+figure.snip0045 figcaption h1 {
+  font-size: 2.5em;
+  font-weight: 300;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+figure.snip0045 figcaption h1 span {
+  font-weight: 800;
+}
+figure.snip0045 figcaption p {
+  font-size: 1.3em;
+  opacity: 0.8;
+}
+figure.snip0045 figcaption .icons {
+  width: 100%;
+  text-align: right;
+}
+figure.snip0045 figcaption .icons i {
+  font-size: 26px;
+  padding: 5px;
+  top: 50%;
+  color: #8500df;
+}
+figure.snip0045 figcaption a {
+  color: #333;
+}
+figure.snip0045 figcaption a:hover {
+  color: #8500df;
+}
+figure.snip0045 .position {
+  width: 100%;
+  text-align: right;
+  padding: 15px 30px;
+  /*font-size: 0.9em;*/
+  opacity: 1;
+  font-style: italic;
+  color: #333;
+  background: #000000;
+  font-weight: bold;
+}
+figure.snip0045 .position a {
+  color: #333;
+  font-size: 1.3em;
+}
+figure.snip0045 .position a:hover {
+  color: #8500df;
+}
+figure.snip0045 .position i {
+  padding-right: 10px;
+  color: #8500df;
+}
+figure.snip0045.blue .position {
+  background: #20638f;
+}
+figure.snip0045.red .position {
+  background: #feb47b;
+}
+figure.snip0045.yellow .position {
+  background: #bf6516;
+}
+figure.snip0045.green .position {
+  background: #1e8449;
+}
+figure.snip0045:hover > img,
+figure.snip0045.hover > img {
+  left: -12%;
+}
+.col-md-6 a {
+	color: #8500df;
+}
+.col-md-6 a:hover {
+	color: #333;
+}

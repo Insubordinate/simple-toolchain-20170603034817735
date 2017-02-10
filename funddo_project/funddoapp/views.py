@@ -20,22 +20,33 @@ import json
 def index(request):
 	return render(request, 'index.html')
 
-def home(request):
+def jobseeker_login(request):
+	return render(request, 'jobseeker_login.html')
+
+def funder_login(request):
 	context_dict = {}
 	request_list = Request.objects.order_by('-posted_on')[:10]
 
 	context_dict['recent_requests']= request_list
 	
-	return render(request, 'home.html', context_dict)
+	return render(request, 'funder_login.html', context_dict)
+
+def userbylocationjob(request):
+	context_dict = {}
+	user_location = UserProfile.objects.order_by('your_location')
+	context_dict['user_location']= user_location
+	
+	return render(request, 'user_location_job.html', context_dict)
+
+def userbylocationfund(request):
+	context_dict = {}
+	user_location = UserProfile.objects.order_by('your_location')
+	context_dict['user_location']= user_location
+	
+	return render(request, 'user_location_fund.html', context_dict)
 
 def about(request):
 	return render(request, 'about.html')
-
-# def jobseekers(request):
-# 	return render(request, 'jobseekers.html')
-
-# def funders(request):
-# 	return render(request, 'funders.html')
 
 def jobseekers(request):
 	context_dict = {}
@@ -68,12 +79,6 @@ def gallery(request):
 	for i in data ['items']:
 		images.append(i['images']['standard_resolution']['url'])
 	return render(request, 'gallery.html', {'images':images})
-
-def contact(request):
-	return render(request, 'contact.html')
-
-
-
 
 @login_required
 def make_request(request):
@@ -178,8 +183,6 @@ def register_funder(request):
 		profile_form = UserFunderForm()
 
 	return render(request, 'register_funder.html', {'user_form' : user_form, 'profile_form': profile_form, 'registered': registered})
-
-
 
 def user_login(request):
 	if request.method == 'POST':
@@ -296,6 +299,19 @@ class SettingsView(LoginRequiredMixin, FormView):
 		update_session_auth_hash(self, request, form.user)
 		return super(SettingView, self).form_valid(form)
 
+class ChangePasswordView(LoginRequiredMixin, FormView):
+	template_name = 'change_password.html'
+	form_class = PasswordChangeForm
+	success_url = reverse_lazy('index')
+
+	def get_form(self, form_class):
+		return form_class(user=self.request.user, **self.get_form_kwargs())
+
+	def form_valid(self, form):
+		form.save()
+		update_session_auth_hash(self, request, form.user)
+		return super(ChangePasswordView, self).form_valid(form)
+
 class PasswordRecoveryView(FormView):
 	template_name = "password-recovery.html"
 	form_class = PasswordRecoveryForm
@@ -307,3 +323,6 @@ class PasswordRecoveryView(FormView):
 
 def funder_profile(request):
 	return render(request, 'funder_profile.html')
+
+def contact(request):
+	return render(request, 'contact.html')
