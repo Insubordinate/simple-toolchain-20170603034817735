@@ -155,7 +155,7 @@
           <div class="causes-nav">  
             <div class="events jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="70%">
               <span class="description-pics">
-                <img src="{{user.picture.url}}" alt="main events" class="img-responsive">  
+                <a href="{% url 'profile' user %}"><img src="{{user.picture.url}}" alt="main events" class="img-responsive"></a> 
               </span>
 
                 <div class="event-box">

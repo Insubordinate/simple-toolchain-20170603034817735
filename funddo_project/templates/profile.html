@@ -18,7 +18,7 @@
                   <span class="inner-link">
                   <a href="index.html">Home <i class="fa fa-angle-double-right"></i></a>
                  </span>
-                  <span class="inner-link">Jobseeker's Profile</span>
+                  <span class="inner-link">Profile</span>
                   </div>
               </div>
           </div>
@@ -27,9 +27,15 @@
 
 <figure class="snip0056">
     <figcaption>
-      <h2>{{profile.first_name}}<span>{{profile.last_name}}</span></h2>
+      {% if profile.jobseekers = True %}
+      <h2>{{profile.first_name}} <span>{{profile.last_name}}</span></h2>
+      {% else %}
+      <h2>{{profile.user.username}}</span></h2>
       <p><b>{{profile.bio}}</b></p>
-      <p>{{profile.your_location}}</p>
+      {% endif %}
+      {% if profile.funder = True %}
+      <p>{{profile.services}}</p>
+      {% endif %}
        {% if requests %}
 	      {% for req in requests %}
 	      <p>{{req.request}}</p>
@@ -42,7 +48,11 @@
     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample8.jpg" alt="sample8" class="img-responsive" />
     {% endif %}
     <a href=""></a>
+    {% if profile.jobseeker = True %}
     <div class="position"><button class="btn btn-default" type="submit"><b>Fund {{profile.user.username}}</b></button></div>
+    {% else %}
+    <div class="position"></div>
+    {% endif %}
   </figure>
 
 {% endblock %}

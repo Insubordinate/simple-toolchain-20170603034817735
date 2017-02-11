@@ -222,7 +222,7 @@ a:hover , a:focus{ text-decoration:none; }
 
 
 .navbar-default .navbar-nav > li.active ,.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{
-	background:#ffff00;
+	background:#8500df;
     color:#000 !important;
 	transition: ease-in-out all .9s; 
 	-moz-transition: ease-in-out all .9s;
@@ -271,7 +271,7 @@ a:hover , a:focus{ text-decoration:none; }
 }
 
 .slider .carousel-caption h1{
-	color:#ffff00;
+	color:#ff7e5f;
 	font-size:75px;
 	margin-bottom:0;
 	
