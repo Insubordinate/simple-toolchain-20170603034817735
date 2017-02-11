@@ -18,7 +18,7 @@
                   <span class="inner-link">
                   <a href="index.html">Home <i class="fa fa-angle-double-right"></i></a>
                  </span>
-                  <span class="inner-link">Jobseeker's Profile</span>
+                  <span class="inner-link">Funder's Profile</span>
                   </div>
               </div>
           </div>
@@ -27,14 +27,8 @@
 
 <figure class="snip0056">
     <figcaption>
-      <h2>{{profile.first_name}}<span>{{profile.last_name}}</span></h2>
       <p><b>{{profile.bio}}</b></p>
-      <p>{{profile.your_location}}</p>
-       {% if requests %}
-	      {% for req in requests %}
-	      <p>{{req.request}}</p>
-	      {% endfor %}
-	   {% endif %}
+      <p>{{profile.services}}</p>
     </figcaption>
     {% if profile.picture %}
     <img src="{{profile.picture.url}}" alt="sample8" />
@@ -42,7 +36,7 @@
     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample8.jpg" alt="sample8" class="img-responsive" />
     {% endif %}
     <a href=""></a>
-    <div class="position"><button class="btn btn-default" type="submit"><b>Fund {{profile.user.username}}</b></button></div>
+    <p>Contact {{profile.user.username}}</p>
   </figure>
 
 {% endblock %}

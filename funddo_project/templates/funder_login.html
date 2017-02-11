@@ -60,7 +60,11 @@
         </span>
       </figcaption>
       <div class="image">
+       {% if user.picture == None %}
         <img src="https://s-media-cache-ak0.pinimg.com/originals/cb/57/36/cb57366593c06af4b837821f5484d084.jpg" alt="sample10" />
+        {% else %}
+        <img src="{{user.picture.url}}">
+        {% endif %}
       </div>
       <a href="#"></a>
     </figure>

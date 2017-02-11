@@ -20,16 +20,16 @@ import json
 def index(request):
 	return render(request, 'index.html')
 
-def jobseeker_login(request):
-	return render(request, 'jobseeker_login.html')
-
-def funder_login(request):
+@login_required
+def home(request):
 	context_dict = {}
+	user = request.user
+	profiles = UserProfile.objects.get(user=user)
 	request_list = Request.objects.order_by('-posted_on')[:10]
 
 	context_dict['recent_requests']= request_list
-	
-	return render(request, 'funder_login.html', context_dict)
+	context_dict['profiles'] = profiles
+	return render(request, 'home.html', context_dict)
 
 def userbylocationjob(request):
 	context_dict = {}
@@ -61,15 +61,6 @@ def funders(request):
 	context_dict['user_location']= user_location
 	
 	return render(request, 'funders.html', context_dict)
-
-# def base(request):
-# 	url = "https://www.instagram.com/fund_dos/media/"
-# 	json_obj = urllib2.urlopen(url)
-# 	data = json.load(json_obj)
-# 	images = []
-# 	for i in data ['items']:
-# 		images.append(i['images']['standard_resolution']['url'])
-# 	return render(request, 'base.html', {'images':images})
 
 def gallery(request):
 	url = "https://www.instagram.com/fund_dos/media/"
@@ -194,7 +185,7 @@ def user_login(request):
 		if user:
 			if user.is_active:
 				login(request, user)
-				return HttpResponseRedirect('/')
+				return HttpResponseRedirect('/home')
 			else:
 				return HttpResponse('Your account is inactive')
 		else:
@@ -214,6 +205,11 @@ def user_profile(request, user_username):
 	profile = UserProfile.objects.get(user=user)
 	context_dict['profile'] = profile
 	context_dict['requests'] = Request.objects.filter(poster=user)
+	request_list = Request.objects.order_by('-posted_on')[:10]
+	user_location = UserProfile.objects.order_by('your_location')
+	context_dict['user_location']= user_location
+
+	# context_dict['recent_requests']= request_list
 
 	return render(request, 'profile.html', context_dict)
 

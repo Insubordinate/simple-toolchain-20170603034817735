@@ -17,6 +17,14 @@ TEMPLATE_DIRS = (
     TEMPLATE_PATH,
     )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "funddoapp.context_processors.instagram",
+    )
+#that makes the instagram pics load on all the pages ^^^^
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -78,17 +86,27 @@ DATABASES = {
     }
 }
 
+# if DEBUG:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         }
+#     }
+
+# if not DEBUG:
+#     DATABASES = {'default' : dj_database_url.config(default='postgres:///djclass')}
+#     DATABASES['default'] ['ENGINE'] = 'django_postgrespool'
+
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'EST'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -99,7 +117,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mholliday6611@gmail.com'
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+EMAIL_HOST_PASSWORD = os.environ.get('MALEMAIL_PASS')
 
 STATIC_URL = '/static/'
 STATIC_PATH = os.path.join(BASE_DIR, 'static')
@@ -111,3 +129,38 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
 LOGIN_URL = '/login/'
+
+
+# if DEBUG:
+#     STATIC_URL = '/static/'
+#     STATIC_ROOT = 'staticfiles'
+
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
+
+#     MEDIA_URL = '/media/'
+#     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    
+# MEDIAFILES_DIRS =(
+#     MEDIA_ROOT,
+#     )
+
+
+# if not DEBUG:
+#     AWS_STORAGE_BUCKET_NAME = 'funddos'
+#     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+#     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+#     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+#     STATICFILES_LOCATION = 'static'
+#     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+#     STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+
+#     MEDIAFILES_LOCATION = 'media'
+#     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+#     MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+
+#     AWS_HEADERS = {
+#         'Access-Control-Allow-Origin' : '*'
+#         }

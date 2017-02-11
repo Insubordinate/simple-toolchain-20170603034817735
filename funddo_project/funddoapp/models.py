@@ -6,6 +6,8 @@ from django.utils.timezone import now
 
 class UserProfile(models.Model):
 	user = models.OneToOneField(User)
+	first_name = models.CharField(max_length=50, verbose_name='First Name')
+	last_name = models.CharField(max_length=50, verbose_name='Last Name')
 	picture = models.ImageField(upload_to='profile_images', blank=True)
 	bio = models.TextField()
 	services = models.TextField(blank=True)

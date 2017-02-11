@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static %}
+  <head>
+    <title>{% block title %}Fund Do's Home{% endblock %}</title>
+  </head>
+{% block body_block %}
+
+{% if profiles.jobseeker = True  %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/jobseeker_login.css' %}">
+
+<!-- <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+      <div class="load_title">Fund Do's</div>
+  </div> -->
+
+  <section class="grey">
+      <div class="container">
+          <div class="row">
+              <div class="top-nav2">
+                  <div class="col-md-9 col-sm-9 col-xs-6 jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="50%">
+                  <span class="heading">{{user.username}}'s Dashboard</span>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-6 text-right jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="50%">
+                  <span class="inner-link">
+                  <a href="index.html">Home <i class="fa fa-angle-double-right"></i></a>
+                 </span>
+                  <span class="inner-link">Dashboard</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+<!-- <div class="inbox">
+    <h1>Welcome {{user.username}}</a></h1><br>
+    {% if profile.picture %}
+      <img src="{{profile.picture.url}}" class="img-responsive img-circle" style="width:150px; margin-top: 15px;">
+    {% else %}
+      <img src="http://www.tshirthell.com/shirts/products/a339/a339.gif?v11301bss2.jpg" class="img-responsive img-circle" style="width:150px;">
+    {% endif %}
+  </div>
+
+</div> -->
+<div class="row">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <figure class="snip0045 red">
+        <figcaption>
+            <h1>Welcome <span>{{user.username}}</span></h1>
+            <p>Good luck with your upcoming job interview!</p>
+            <div class="icons">
+                <a href="{% url 'edit_jobseekerprofile' user.username %}"><i class="fa fa-user"></i>Edit Profile</a><br>
+                <a href="{% url 'edit_jobseekerprofile' user.username %}"><i class="fa fa-key"></i>Change Password</a><br>
+            </div>  
+        </figcaption>
+        {% if profiles.picture == None %}
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample7.jpg" alt="sample7"/>
+        {% else %} 
+          <img src="{{profiles.picture.url}}" class="img-responsive img-circle">
+        {% endif %}  
+        <div class="position">
+          <a href="{% url 'make_request' %}"><i class="fa fa-flag"></i>Post to Funders</a>  
+        </div>
+    </figure>
+  </div>
+
+  <div class="col-md-6 col-sm-6 col-xs-12 text-center">
+    <h2><b>Job/Interview Resources</b></h2>
+    <a href="https://enhancv.com/"><p>Enhancv: Craft Your Resume</p></a>
+    <a href="http://www.forbes.com/sites/roberthellmann/2016/12/06/how-to-get-interviews-in-2017/#61893a50a993"><p>How To Get Interviews In 2017</p></a>
+    <a href="http://www.forbes.com/sites/georgebradt/2017/01/02/how-to-become-the-must-hire-candidate-in-a-job-interview/#364946143bb3"><p>How To Become The 'Must Hire' Candidate In A Job Interview</p></a>
+    <a href="http://www.forbes.com/sites/carolinebeaton/2017/01/06/top-employers-say-millennials-need-these-4-skills-in-2017/#4149123a3ded"><p>Top Employers Say Millennials Need These 4 Skills in 2017</p></a>
+    <a href="http://www.forbes.com/sites/ashleystahl/2016/10/26/how-to-ace-the-top-7-most-common-interview-questions/#1b9bcfaf2a71"><p>How To Ace The Top 7 Most Common Interview Questions</p></a>
+    <a href="https://www.canva.com/"><p>Canva: Can Be Used For Cover Letter And Resume Design</p></a>
+    <a href="https://www.bls.gov/careeroutlook/2015/article/getting-back-to-work.htm"><p>Getting Back To Work: Returning To The Labor Force After An Absence</p></a>
+    <a href="http://www.iftf.org/uploads/media/SR-1382A_UPRI_future_work_skills_sm.pdf"><p>Future Work Skills 2020</p></a>
+  </div>
+</div>
+
+
+{% else %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/funder_login.css' %}">
+
+<!-- <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+      <div class="load_title">Fund Do's</div>
+  </div> -->
+
+  <section class="grey">
+      <div class="container">
+          <div class="row">
+              <div class="top-nav2">
+                  <div class="col-md-9 col-sm-9 col-xs-6 jw-animate-gen noOpacity" data-gen="fadeInLeft" data-gen-offset="50%">
+                  <span class="heading">{% if user.is_authenticated %}{{user.username}}'s Dashboard{% endif %}</span>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-6 text-right jw-animate-gen noOpacity" data-gen="fadeInRight" data-gen-offset="50%">
+                  <span class="inner-link">
+                  <a href="index.html">Home <i class="fa fa-angle-double-right"></i></a>
+                 </span>
+                  <span class="inner-link">Dashboard</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+<div class="row">
+  <div class="col-sm-6 col-md-6 col-xs-12">
+    <div class="request">
+      <h1>Recent Jobseeker Requests</h1>
+        <u1 class="list-group">
+          {% for req in recent_requests %}
+          <li class="list-group-item">
+            <a href="/requests/{{req.id}}"><p><b>{{ req.title }}</b></p></a><br>
+            <p>{{ req.request }}</p>
+            <a href="{% url 'profile' req.poster %}"><p style="text-align: right;">-{{ req.poster }}'s Profile</p></a>
+          </li>
+          {% endfor %}
+        </u1>
+    </div><!-- ./request -->
+
+
+  </div>
+
+  <div class="col-sm-6 col-md-6 col-xs-12">
+    <figure class="snip0064">
+      <figcaption>
+        <p>Thank You for joining Fund Do's and contributing to life changing opportunities. View recent requests and select one to connect with a jobseeker. Happy Funding!</p>
+        <h2>Welcome <span>{{user.username}}</span></h2>
+            <span class="position">
+            <a href="{% url 'edit_jobseekerprofile' user.username %}"><i class="fa fa-user fa-lg"></i> Edit Profile</a><a href="{% url 'edit_jobseekerprofile' user.username %}"><i class="fa fa-key"></i> Change Password</a>
+        </span>
+      </figcaption>
+      <div class="image">
+        {% if profiles.picture == None %}
+        <img src="https://s-media-cache-ak0.pinimg.com/originals/cb/57/36/cb57366593c06af4b837821f5484d084.jpg" alt="sample10" />
+        {% else %}
+        <img src="{{profiles.picture.url}}">
+        {% endif %}
+      </div>
+      <a href="#"></a>
+    </figure>
+  <a href="{% url 'jobseekers' %}"><h2 style="text-align:center; color: #8500df;">Browse Jobseekers by Location</h2></a>
+</div>
+{% endif %}
+{% endblock %}

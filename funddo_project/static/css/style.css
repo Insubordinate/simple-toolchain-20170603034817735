@@ -146,6 +146,13 @@ a:hover , a:focus{ text-decoration:none; }
 
 }
 
+.img1 img {
+	background:
+    linear-gradient(
+      rgba(255, 0, 0, 0.45), 
+      rgba(255, 0, 0, 0.45)
+    ),
+}
 .navbar{
 	margin-bottom:0;
 }
@@ -785,13 +792,13 @@ footer p{
 .inner-link > a:hover{ color:#646464; text-decoration:underline; }
 
 .heading{ color:#282828; font-size:20px; text-transform: uppercase;}
-.about-section{ padding-top:5%;}
+.about-section{ padding-top:15px;}
 .about-section h1{
 	margin:0;
 	color:#333333;
 }
 /*having pic and some text*/
-.who-we-are{ color:#282828; padding: 6% 0 0; }
+.who-we-are{ color:#282828;}
 
 .who-we-are h2{
 	font-size:22px;
@@ -965,9 +972,15 @@ ul#portfolio-list li {
     overflow: hidden;
     width: 100%}
 .description .detail{ color:#282828; padding: 24px 20px;}
+
 .description .detail:hover{ 
-	background:#fefe00;
+	background:#8500df;
 	transition:all 0.5s ease-in-out 0.1s;
+	color: #fff;
+}
+.description .detail:hover h2{
+	transition:all 0.5s ease-in-out 0.1s;
+	color: #fff;
 }
 .description .detail h2{ color:#333333; font-size:24px; margin-top:0;}
 
@@ -1315,7 +1328,7 @@ ul#filter-list > li > a:focus{
 }
 
 .contact-wrap{
-	padding:4% 0 6%;
+	padding:0 0 3%;
 }
 .contact{ color:#646464; }
 .contact h1{ color:#282828; text-transform:uppercase; margin-bottom:6%; }

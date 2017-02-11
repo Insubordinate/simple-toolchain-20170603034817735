@@ -18,14 +18,14 @@ class UserJobSeekerForm(forms.ModelForm):
 	your_location = forms.ChoiceField(choices= LOCATION_CHOICES, widget=forms.Select(), required=True)
 	class Meta:
 		model = UserProfile
-		fields = ('picture', 'bio', 'your_location')
+		fields = ('first_name', 'last_name', 'picture', 'bio', 'your_location')
 		exclude = ('funder', 'services', 'jobseeker' )
 
 class UserFunderForm(forms.ModelForm):
 	your_location = forms.ChoiceField(choices= LOCATION_CHOICES, widget=forms.Select(), required=True)
 	class Meta:
 		model = UserProfile
-		fields = ('picture', 'services', 'bio', 'your_location')
+		fields = ('first_name', 'last_name', 'picture', 'services', 'bio', 'your_location')
 		exclude = ('jobseeker', 'funder' )
 
 class RequestForm(forms.ModelForm):
