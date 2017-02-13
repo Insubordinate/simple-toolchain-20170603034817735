@@ -85,3 +85,10 @@ footer{
   margin: 0 0 20px;
 }
 
+.img1 {
+ background-color: rgba(0,0,0,.5);
+   /* linear-gradient(
+      rgba(255, 0, 0, 0.45), 
+      rgba(255, 0, 0, 0.45)
+    ),*/
+}

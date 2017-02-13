@@ -49,7 +49,7 @@
     {% endif %}
     <a href=""></a>
     {% if profile.jobseeker = True %}
-    <div class="position"><button class="btn btn-default" type="submit"><b>Fund {{profile.user.username}}</b></button></div>
+    <a href="{% url 'home' %}"></a><div class="position"><button class="btn btn-default" type="submit"><b>Fund {{profile.user.username}}</b></button></div></a>
     {% else %}
     <div class="position"></div>
     {% endif %}
