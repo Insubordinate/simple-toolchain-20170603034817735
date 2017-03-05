@@ -255,6 +255,9 @@ def edit_jobseekerprofile(request, user_username):
 	profile = get_object_or_404(UserProfile, user__username=user_username)
 	pic = profile.picture
 	bio = profile.bio
+	first_name = profile.first_name
+	last_name = profile.last_name
+
 	if request.user != profile.user:
 		return HttpResponse('Access Denied Loser')
 
@@ -266,6 +269,16 @@ def edit_jobseekerprofile(request, user_username):
 				profile.bio = request.POST['bio']
 			else:
 				profile.bio = bio
+
+			if request.POST['first_name'] and request.POST['first_name'] != '':
+				profile.first_name = request.POST['first_name']
+			else:
+				profile.first_name = first_name
+
+			if request.POST['last_name'] and request.POST['last_name'] != '':
+				profile.last_name = request.POST['last_name']
+			else:
+				profile.last_name = last_name
 
 			if 'picture' in request.FILES:
 				profile.picture = request.FILES['picture']

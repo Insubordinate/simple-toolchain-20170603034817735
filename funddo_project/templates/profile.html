@@ -30,8 +30,8 @@
       {% if profile.jobseekers = True %}
       <h2>{{profile.first_name}} <span>{{profile.last_name}}</span></h2>
       {% else %}
-      <h2>{{profile.user.username}}</span></h2>
-      <p><b>{{profile.bio}}</b></p>
+      <h2 style="font-size: 24px;"><b>{{profile.user.username}}</b></span></h2>
+      <p style="margin-top: 25px; font-size: 18px;">{{profile.bio}}</p>
       {% endif %}
       {% if profile.funder = True %}
       <p>{{profile.services}}</p>
@@ -49,9 +49,9 @@
     {% endif %}
     <a href=""></a>
     {% if profile.jobseeker = True %}
-    <a href="{% url 'home' %}"></a><div class="position"><button class="btn btn-default" type="submit"><b>Fund {{profile.user.username}}</b></button></div></a>
+    <a href="{% url 'home' %}"></a><div class="position"><button class="btn btn-default" type="submit"><b>Fund {{profile.first_name}} Today</b></button></div></a>
     {% else %}
-    <div class="position"></div>
+    <a href="{% url 'home' %}"></a><div class="position"><button class="btn btn-default" type="submit"><b>Contact {{profile.user.username}} Today</b></button></div></a>
     {% endif %}
   </figure>
 
